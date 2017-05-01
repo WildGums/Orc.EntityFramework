@@ -9,9 +9,23 @@
     <Import_RootNamespace>Orc.EntityFramework.Tests</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ConnectionStringManagerFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ContextManagerFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DbContextManagerFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Helpers\ConnectionStringHelperFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Helpers\EfConnectionStringHelperFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ObjectContextManagerFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\UnitOfWorkFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DbContextExtensionsFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\QueryableExtensionsFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalInitialization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\EFTestHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\IsolationHelperFacts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInitializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\SolutionAssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\GlobalSuppressions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\MethodTimeLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\EntityRepositoryFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestClasses\TestConnectionStrings.cs" />
   </ItemGroup>
 </Project>

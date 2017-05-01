@@ -1,6 +1,7 @@
 using Catel.IoC;
 using Catel.Services;
 using Catel.Services.Models;
+using Orc.EntityFramework;
 
 /// <summary>
 /// Used by the ModuleInit. All code inside the Initialize method is ran as soon as the assembly is loaded.
@@ -13,6 +14,9 @@ public static class ModuleInitializer
     public static void Initialize()
     {
         var serviceLocator = ServiceLocator.Default;
+
+        serviceLocator.RegisterTypeIfNotYetRegistered<IConnectionStringManager, ConnectionStringManager>();
+        serviceLocator.RegisterTypeIfNotYetRegistered<IContextFactory, ContextFactory>();
 
         var languageService = serviceLocator.ResolveType<ILanguageService>();
         languageService.RegisterLanguageSource(new LanguageResourceSource("Orc.EntityFramework", "Orc.EntityFramework.Properties", "Resources"));

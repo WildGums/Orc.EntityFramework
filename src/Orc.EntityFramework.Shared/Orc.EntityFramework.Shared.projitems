@@ -9,9 +9,32 @@
     <Import_RootNamespace>Orc.EntityFramework</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ConnectionStringManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ContextFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ContextManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DbContextManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Helpers\ConnectionStringHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Helpers\DbContextManagerHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Helpers\EfConnectionStringHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Interfaces\IConnectionStringManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Interfaces\IContextFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ObjectContextManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\UnitOfWork.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\UnitOfWork.generic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ConfigurationExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DbContextExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DbContextExtensions.generic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DbContextExtensions.transactions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DbEntityEntryExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\QueryableExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\IsolationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInitializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\SolutionAssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\GlobalSuppressions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\MethodTimeLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\EntityRepositoryBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\Extensions\IEntityRepositoryExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\Interfaces\IEntityRepository.cs" />
   </ItemGroup>
 </Project>

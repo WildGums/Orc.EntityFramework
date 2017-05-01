@@ -8,12 +8,14 @@
     <owners>WildGums</owners>
 
 	<description>
-	  Orc.EntityFramework 6 library.
+	  Orc.EntityFramework 6 library which provides data classes such as repositories, unit of work, DbContextManager and more.
+	  
+	  This is the replacement for Catel.Extensions.EntityFramework6.
 	</description>
 	<summary>
 	</summary>
 
-	<tags></tags>
+	<tags>catel entity framework entityframework EF EF6 UnitOfWork unit of work DbContextManager repository repositories database</tags>
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright WildGums 2015 - 2017</copyright>
@@ -25,6 +27,7 @@
     
     <dependencies>
       <dependency id="Catel.Core" version="[replaced]" />
+      <dependency id="EntityFramework" version="[replaced]" /> 
     </dependencies>
   </metadata>
 </package>

@@ -50,13 +50,18 @@
     <Reference Include="Catel.Fody.Attributes, Version=2.16.2.0, Culture=neutral, PublicKeyToken=1c8163524cbe02e6, processorArchitecture=MSIL">
       <HintPath>..\..\..\lib\Catel.Fody.2.16.2\lib\portable-net4+sl4+wp7+win8+wpa81+MonoAndroid14+MonoTouch40\Catel.Fody.Attributes.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,12 +73,21 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModuleInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Orc.EntityFramework5.Tests.DbContext\Orc.EntityFramework5.Tests.DbContext.NET46\Orc.EntityFramework5.Tests.DbContext.NET46.csproj">
+      <Project>{b281f744-9a46-422d-b346-b58bb0519920}</Project>
+      <Name>Orc.EntityFramework5.Tests.DbContext.NET46</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Orc.EntityFramework5.Tests.ObjectContext\Orc.EntityFramework5.Tests.ObjectContext.NET46\Orc.EntityFramework5.Tests.ObjectContext.NET46.csproj">
+      <Project>{cf0d53f6-8e04-4088-bd51-3782d72fd90f}</Project>
+      <Name>Orc.EntityFramework5.Tests.ObjectContext.NET46</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Orc.EntityFramework5\Orc.EntityFramework5.NET46\Orc.EntityFramework5.NET46.csproj">
       <Project>{423213a2-b1c8-4f34-9094-02acb7fe0788}</Project>
       <Name>Orc.EntityFramework5.NET46</Name>
