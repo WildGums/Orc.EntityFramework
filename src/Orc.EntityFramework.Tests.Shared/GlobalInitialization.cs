@@ -17,7 +17,7 @@ using Orc.EntityFramework.Tests.DbContext;
 [SetUpFixture]
 public class GlobalInitialization
 {
-    [SetUp]
+    [OneTimeSetUp]
     public static void SetUp()
     {
         //System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
