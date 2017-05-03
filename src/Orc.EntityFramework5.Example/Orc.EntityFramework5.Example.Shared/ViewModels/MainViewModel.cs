@@ -18,6 +18,7 @@ namespace Orc.EntityFramework5.ViewModels
     {
         public MainViewModel()
         {
+            Title = "Orc.EntityFramework 5 example";
         }
 
         #region Properties
