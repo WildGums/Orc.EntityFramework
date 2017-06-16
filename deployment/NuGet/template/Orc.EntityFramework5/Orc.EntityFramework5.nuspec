@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Orc.EntityFramework5</id>
+    <version>[VERSION]</version>
+    <title>Orc.EntityFramework5</title>
+    <authors>WildGums</authors>
+    <owners>WildGums</owners>
+
+	<description>
+	  Orc.EntityFramework 5 library which provides data classes such as repositories, unit of work, DbContextManager and more.
+	  
+	  This is the replacement for Catel.Extensions.EntityFramework5.
+	</description>
+	<summary>
+	</summary>
+
+	<tags>catel entity framework entityframework EF EF5 UnitOfWork unit of work DbContextManager repository repositories database</tags>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>Copyright WildGums 2015 - 2017</copyright>
+
+	<language>en-US</language>
+	<projectUrl>https://github.com/WildGums/Orc.EntityFramework</projectUrl>
+	<!--<licenseUrl>http://catel.codeplex.com/license</licenseUrl>-->
+	<!--<iconUrl>http://www.catenalogic.com/catel.png</iconUrl>-->
+    
+    <dependencies>
+      <dependency id="Catel.Core" version="[replaced]" />
+      <dependency id="EntityFramework" version="[replaced]" /> 
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>fa412dde-b14c-411d-9729-ade5b2cafb71</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Orc.EntityFramework.Tests.DbContext</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ModuleInitializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\DbContextCustomerRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\DbContextOrderRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\DbContextProductRepository.cs" />
+  </ItemGroup>
+</Project>
