@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\UnitOfWorkFacts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\DbContextExtensionsFacts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\QueryableExtensionsFacts.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalInitialization.approvaltests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GlobalInitialization.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\EFTestHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\IsolationHelperFacts.cs" />
@@ -25,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)..\SolutionAssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\GlobalSuppressions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)..\MethodTimeLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PublicApiFacts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\EntityRepositoryFacts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestClasses\TestConnectionStrings.cs" />
   </ItemGroup>
