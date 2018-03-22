@@ -30,9 +30,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\QueryableExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\IsolationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInitializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)..\SolutionAssemblyInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)..\GlobalSuppressions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)..\MethodTimeLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\EntityRepositoryBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\Extensions\IEntityRepositoryExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\Interfaces\IEntityRepository.cs" />

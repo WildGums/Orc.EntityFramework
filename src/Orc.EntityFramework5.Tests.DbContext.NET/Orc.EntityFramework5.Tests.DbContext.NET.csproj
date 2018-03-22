@@ -1,0 +1,103 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net462</TargetFrameworks>
+    <AssemblyName>Orc.EntityFramework.Tests.DbContext.NET</AssemblyName>
+    <RootNamespace>Orc.EntityFramework.Tests.DbContext</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <StartupObject />
+    <NoWarn>$(NoWarn);SA1652</NoWarn>
+    <ApplicationIcon />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.2" PrivateAssets="All" />
+    <PackageReference Include="Catel.Core" Version="5.3.0" />
+    <PackageReference Include="Catel.MVVM" Version="5.3.0" />
+    <PackageReference Include="Catel.Fody" Version="3.1.0" PrivateAssets="all" />
+    <PackageReference Include="Fody" Version="2.4.6" PrivateAssets="all" />
+    <PackageReference Include="LoadAssembliesOnStartup.Fody" Version="2.0.2" PrivateAssets="all" />
+    <PackageReference Include="ModuleInit.Fody" Version="1.7.1" PrivateAssets="all" />
+    <PackageReference Include="Obsolete.Fody" Version="4.3.7" PrivateAssets="all" />
+    <PackageReference Include="Orchestra.Core" Version="4.0.0" />
+    <PackageReference Include="WpfAnalyzers" Version="2.1.2" PrivateAssets="all" />
+    <PackageReference Include="Orc.Controls" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="NETStandard.Library" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Orc.EntityFramework5\Orc.EntityFramework5.csproj" />
+  </ItemGroup>
+
+  <Import Project="..\Orc.EntityFramework5.Tests.DbContext.Shared\Orc.EntityFramework5.Tests.DbContext.Shared.projitems" Label="Shared" />
+
+  <Import Project="..\Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.projitems" Label="Shared" />
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EntityDeploy Include="..\Orc.EntityFramework5.Tests.DbContext.Shared\TestDbContext.edmx">
+      <Link>TestDbContext.edmx</Link>
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TestDbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="..\Orc.EntityFramework5.Tests.DbContext.Shared\TestDbContext.edmx.diagram">
+      <Link>TestDbContext.edmx.diagram</Link>
+      <DependentUpon>TestDbContext.edmx</DependentUpon>
+    </None>
+    <Compile Include="..\Orc.EntityFramework5.Tests.DbContext.Shared\DbContextCustomer.cs">
+      <Link>DbContextCustomer.cs</Link>
+      <DependentUpon>TestDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="..\Orc.EntityFramework5.Tests.DbContext.Shared\DbContextOrder.cs">
+      <Link>DbContextOrder.cs</Link>
+      <DependentUpon>TestDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="..\Orc.EntityFramework5.Tests.DbContext.Shared\DbContextProduct.cs">
+      <Link>DbContextProduct.cs</Link>
+      <DependentUpon>TestDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="..\Orc.EntityFramework5.Tests.DbContext.Shared\TestDbContext.Context.cs">
+      <Link>TestDbContext.Context.cs</Link>
+    </Compile>
+    <Compile Include="..\Orc.EntityFramework5.Tests.DbContext.Shared\TestDbContext.cs">
+      <Link>TestDbContext.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="..\Orc.EntityFramework5.Tests.DbContext.Shared\TestDbContext.Designer.cs">
+      <Link>TestDbContext.Designer.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDbContext.edmx</DependentUpon>
+    </Compile>
+    <Content Include="..\Orc.EntityFramework5.Tests.DbContext.Shared\TestDbContext.tt">
+      <Link>TestDbContext.tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TestDbContext.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+  <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.props')" />
+</Project>

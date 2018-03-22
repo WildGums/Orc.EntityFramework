@@ -23,9 +23,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\EFTestHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\IsolationHelperFacts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInitializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)..\SolutionAssemblyInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)..\GlobalSuppressions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)..\MethodTimeLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PublicApiFacts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\EntityRepositoryFacts.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestClasses\TestConnectionStrings.cs" />
