@@ -14,6 +14,7 @@ namespace Orc.EntityFramework.Tests
     [TestFixture]
     public class PublicApiFacts
     {
+#if EF6
         [Test, MethodImpl(MethodImplOptions.NoInlining)]
         public void Orc_EntityFramework_HasNoBreakingChanges()
         {
@@ -21,5 +22,6 @@ namespace Orc.EntityFramework.Tests
 
             PublicApiApprover.ApprovePublicApi(assembly);
         }
+#endif
     }
 }
