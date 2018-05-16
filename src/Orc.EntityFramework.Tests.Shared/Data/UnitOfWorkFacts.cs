@@ -9,7 +9,7 @@ namespace Orc.EntityFramework.Tests
     using System;
 
     using Catel.Data;
-    using Catel.Test;
+    using Catel.Tests;
     using DbContext;
     using DbContext.Repositories;
     using NUnit.Framework;

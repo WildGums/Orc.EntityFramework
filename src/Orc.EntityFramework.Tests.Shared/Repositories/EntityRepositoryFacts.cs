@@ -8,7 +8,7 @@ namespace Orc.EntityFramework.Tests
 {
     using System;
     using System.Linq;
-    using Catel.Test;
+    using Catel.Tests;
     using DbContext;
     using DbContext.Repositories;
     using NUnit.Framework;

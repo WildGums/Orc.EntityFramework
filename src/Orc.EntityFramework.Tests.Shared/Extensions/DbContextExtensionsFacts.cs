@@ -11,7 +11,7 @@ namespace Orc.EntityFramework.Tests
     using System.Data.Entity;
 
     using Catel.Data;
-    using Catel.Test;
+    using Catel.Tests;
     using DbContext;
     using NUnit.Framework;
 
