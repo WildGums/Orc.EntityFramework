@@ -4,6 +4,7 @@
     <AssemblyName>Orc.EntityFramework6.Example.NET</AssemblyName>
     <RootNamespace>Orc.EntityFramework6.Example</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
+    <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
 
   <PropertyGroup>
