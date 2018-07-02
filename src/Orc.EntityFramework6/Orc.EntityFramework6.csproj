@@ -11,6 +11,11 @@
     <DefineConstants>$(DefineConstants);EF6</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- SonarQube requires a project guid -->
+    <ProjectGuid>BE45A653-6FF3-4634-BBD3-B68435FE10F3</ProjectGuid>
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.2.0" />
     <PackageReference Include="MethodTimer.Fody" Version="2.1.0" PrivateAssets="all" />

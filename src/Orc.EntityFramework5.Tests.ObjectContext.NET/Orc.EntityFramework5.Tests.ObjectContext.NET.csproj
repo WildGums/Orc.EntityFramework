@@ -4,6 +4,7 @@
     <AssemblyName>Orc.EntityFramework.Tests.ObjectContext.NET</AssemblyName>
     <RootNamespace>Orc.EntityFramework5.Tests.ObjectContext</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
+    <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
 
   <PropertyGroup>
