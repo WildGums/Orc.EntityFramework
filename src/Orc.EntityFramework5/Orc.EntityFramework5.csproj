@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net46;net47</TargetFrameworks>
+    <AssemblyName>Orc.EntityFramework</AssemblyName>
+    <RootNamespace>Orc.EntityFramework</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <PackageId>Orc.EntityFramework5</PackageId>
+    <PackageVersion>1.0.0-alpha0001</PackageVersion>
+    <Description>Entity Framework 5 library.</Description>
+    <PackageTags>orc;entity;framework;database</PackageTags>
+    <DefineConstants>$(DefineConstants);EF5</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- SonarQube requires a project guid -->
+    <ProjectGuid>CB667631-C3E2-40C9-ACA4-B636193F3AAD</ProjectGuid>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="5.0.0" />
+    <PackageReference Include="MethodTimer.Fody" Version="2.1.1" PrivateAssets="all" />
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="all" />
+    <PackageReference Include="Catel.Core" Version="5.6.0" />
+    <PackageReference Include="Catel.Fody" Version="3.3.0" PrivateAssets="all" />
+    <PackageReference Include="Fody" Version="3.1.3" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="ModuleInit.Fody" Version="1.8.1" PrivateAssets="all" />
+    <PackageReference Include="Obsolete.Fody" Version="4.4.1" PrivateAssets="all" />
+    <PackageReference Include="WpfAnalyzers" Version="2.1.3.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="NETStandard.Library" Version="2.0.1" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+
+  <Import Project="..\Orc.EntityFramework.Shared\Orc.EntityFramework.Shared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props')" />
+  <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props')" />
+</Project>

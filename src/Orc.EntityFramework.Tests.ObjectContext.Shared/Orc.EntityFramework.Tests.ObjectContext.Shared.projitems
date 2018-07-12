@@ -6,7 +6,7 @@
     <SharedGUID>d1d871f9-aebd-4c5b-bd43-e19bd3afa9b4</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Orc.EntityFramework.Tests.ObjectContext.Shared</Import_RootNamespace>
+    <Import_RootNamespace>Orc.EntityFramework.Tests.ObjectContext</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInitializer.cs" />

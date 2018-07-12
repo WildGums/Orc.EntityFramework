@@ -10,7 +10,7 @@ namespace Orc.EntityFramework.Tests
 {
     using System;
     using Catel.Data;
-    using Catel.Test;
+    using Catel.Tests;
     using NUnit.Framework;
     using ObjectContext;
 
