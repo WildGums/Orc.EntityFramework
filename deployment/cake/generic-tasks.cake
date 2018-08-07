@@ -7,6 +7,25 @@
 
 //-------------------------------------------------------------
 
+private void ValidateRequiredInput(string parameterName)
+{
+    if (!Parameters.ContainsKey(parameterName))
+    {
+        Error("Parameter '{0}' is required but not defined", parameterName);
+    }
+}
+
+//-------------------------------------------------------------
+
+private void ValidateGenericInput()
+{
+    ValidateRequiredInput("SolutionName");
+    ValidateRequiredInput("Company");
+    ValidateRequiredInput("RepositoryUrl");
+}
+
+//-------------------------------------------------------------
+
 private void LogSeparator(string messageFormat, params object[] args)
 {
     Information("");
