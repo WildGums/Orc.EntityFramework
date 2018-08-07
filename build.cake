@@ -55,7 +55,8 @@ var UwpAppsToBuild = new string[]
 
 var TestProjectsToBuild = new string[]
 {
-    string.Format("{0}.Tests", GetBuildServerVariable("SolutionName"))
+    "Orc.EntityFramework5.Tests",
+    "Orc.EntityFramework6.Tests"
 };
 
 //=======================================================
