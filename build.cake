@@ -25,48 +25,11 @@ Parameters["CodeSignWildcard"] = "Orc.EntityFramework";
 // DEFINE COMPONENTS TO BUILD / PACKAGE
 //=======================================================
 
-var ComponentsToBuild = new string[]
-{
-    "Orc.EntityFramework5",
-    "Orc.EntityFramework6"
-};
+Components.Add("Orc.EntityFramework5");
+Components.Add("Orc.EntityFramework6");
 
-//=======================================================
-// DEFINE WEB APPS TO BUILD / PACKAGE
-//=======================================================
-
-var WebAppsToBuild = new string[]
-{
-
-};
-
-//=======================================================
-// DEFINE WPF APPS TO BUILD / PACKAGE
-//=======================================================
-
-var WpfAppsToBuild = new string[]
-{
-
-};
-
-//=======================================================
-// DEFINE UWP APPS TO BUILD / PACKAGE
-//=======================================================
-
-var UwpAppsToBuild = new string[]
-{
-
-};
-
-//=======================================================
-// DEFINE TEST PROJECTS TO BUILD
-//=======================================================
-
-var TestProjectsToBuild = new string[]
-{
-    "Orc.EntityFramework5.Tests",
-    "Orc.EntityFramework6.Tests"
-};
+TestProjects.Add("Orc.EntityFramework5.Tests");
+TestProjects.Add("Orc.EntityFramework6.Tests");
 
 //=======================================================
 // REQUIRED INITIALIZATION, DO NOT CHANGE
