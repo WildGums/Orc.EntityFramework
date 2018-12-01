@@ -11,11 +11,12 @@ namespace Orc.EntityFramework
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
-    using System.Management.Instrumentation;
+    
     using System.Text.RegularExpressions;
 
     using Catel;
     using Catel.Caching;
+    using Catel.Logging;
     using Catel.Reflection;
 
 #if EF5
@@ -292,9 +293,9 @@ namespace Orc.EntityFramework
                     return dbContext.GetEntitySetName(entityType.BaseType);
                 }
 
-                if (entitySet == null)
+                if (entitySet is null)
                 {
-                    throw new InstanceNotFoundException(String.Format("No EntitySet has been found for the provided Type '{0}'", entityType));
+                    throw Log.ErrorAndCreateException<NotSupportedException>(string.Format("No EntitySet has been found for the provided Type '{0}'", entityType));
                 }
 
                 return entitySet.Name;
