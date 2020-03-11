@@ -8,7 +8,7 @@
     <PackageVersion>1.0.0-alpha0001</PackageVersion>
     <Description>Entity Framework 6 library.</Description>
     <PackageTags>orc;entity;framework;database</PackageTags>
-    <DefineConstants>$(DefineConstants);EF6</DefineConstants>
+    <DefineConstants>$(DefineConstants);EF6;EF_ASYNC</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup>
