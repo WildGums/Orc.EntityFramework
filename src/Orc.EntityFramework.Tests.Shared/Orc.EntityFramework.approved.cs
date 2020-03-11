@@ -101,20 +101,30 @@ namespace Orc.EntityFramework
     {
         public static int Count<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
             where TEntity :  class { }
+        public static System.Threading.Tasks.Task<int> CountAsync<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
+            where TEntity :  class { }
         public static void Delete<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate)
             where TEntity :  class { }
         public static System.Linq.IQueryable<TEntity> Find<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate)
             where TEntity :  class { }
         public static TEntity First<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
             where TEntity :  class { }
+        public static System.Threading.Tasks.Task<TEntity> FirstAsync<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
+            where TEntity :  class { }
         public static TEntity FirstOrDefault<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
+            where TEntity :  class { }
+        public static System.Threading.Tasks.Task<TEntity> FirstOrDefaultAsync<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
             where TEntity :  class { }
         public static System.Linq.IQueryable<TEntity> GetAll<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository)
             where TEntity :  class { }
         public static System.Linq.Expressions.Expression<System.Func<TEntity, bool>> GetValidPredicate<TEntity>(this System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate) { }
         public static TEntity Single<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
             where TEntity :  class { }
+        public static System.Threading.Tasks.Task<TEntity> SingleAsync<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
+            where TEntity :  class { }
         public static TEntity SingleOrDefault<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
+            where TEntity :  class { }
+        public static System.Threading.Tasks.Task<TEntity> SingleOrDefaultAsync<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
             where TEntity :  class { }
     }
     public class static IsolationHelper
@@ -126,12 +136,16 @@ namespace Orc.EntityFramework
         bool IsInTransaction { get; }
         void BeginTransaction(System.Data.IsolationLevel isolationLevel = 4096);
         void CommitTransaction();
+        System.Threading.Tasks.Task CommitTransactionAsync();
         TEntityRepository GetRepository<TEntityRepository>()
             where TEntityRepository : Orc.EntityFramework.Repositories.IEntityRepository;
         void Refresh(System.Data.Entity.Core.Objects.RefreshMode refreshMode, System.Collections.IEnumerable collection);
         void Refresh(System.Data.Entity.Core.Objects.RefreshMode refreshMode, object entity);
+        System.Threading.Tasks.Task RefreshAsync(System.Data.Entity.Core.Objects.RefreshMode refreshMode, System.Collections.IEnumerable collection);
+        System.Threading.Tasks.Task RefreshAsync(System.Data.Entity.Core.Objects.RefreshMode refreshMode, object entity);
         void RollBackTransaction();
         void SaveChanges();
+        System.Threading.Tasks.Task SaveChangesAsync();
     }
     public class ObjectContextManager<TObjectContext> : Orc.EntityFramework.ContextManager<TObjectContext>
         where TObjectContext : System.Data.Entity.Core.Objects.ObjectContext
@@ -149,17 +163,22 @@ namespace Orc.EntityFramework
         protected System.Data.Common.DbTransaction Transaction { get; set; }
         public virtual void BeginTransaction(System.Data.IsolationLevel isolationLevel = 4096) { }
         public virtual void CommitTransaction() { }
+        public virtual System.Threading.Tasks.Task CommitTransactionAsync() { }
         public void Dispose() { }
         protected void DisposeDbContext() { }
         public virtual TEntityRepository GetRepository<TEntityRepository>()
             where TEntityRepository : Orc.EntityFramework.Repositories.IEntityRepository { }
         protected virtual void OnDisposing() { }
         protected virtual void OpenConnection() { }
+        protected virtual System.Threading.Tasks.Task OpenConnectionAsync() { }
         public virtual void Refresh(System.Data.Entity.Core.Objects.RefreshMode refreshMode, System.Collections.IEnumerable collection) { }
         public virtual void Refresh(System.Data.Entity.Core.Objects.RefreshMode refreshMode, object entity) { }
+        public virtual System.Threading.Tasks.Task RefreshAsync(System.Data.Entity.Core.Objects.RefreshMode refreshMode, System.Collections.IEnumerable collection) { }
+        public virtual System.Threading.Tasks.Task RefreshAsync(System.Data.Entity.Core.Objects.RefreshMode refreshMode, object entity) { }
         protected virtual void ReleaseTransaction() { }
         public virtual void RollBackTransaction() { }
         public virtual void SaveChanges() { }
+        public virtual System.Threading.Tasks.Task SaveChangesAsync() { }
     }
     public class UnitOfWork<TDbContext> : Orc.EntityFramework.UnitOfWork
         where TDbContext : System.Data.Entity.DbContext
