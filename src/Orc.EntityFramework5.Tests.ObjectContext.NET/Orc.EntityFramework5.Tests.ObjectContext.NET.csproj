@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>net462</TargetFrameworks>
+    <TargetFrameworks>net47</TargetFrameworks>
     <AssemblyName>Orc.EntityFramework.Tests.ObjectContext.NET</AssemblyName>
     <RootNamespace>Orc.EntityFramework5.Tests.ObjectContext</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -41,21 +41,6 @@
   <Import Project="..\Orc.EntityFramework5.Tests.ObjectContext.Shared\Orc.EntityFramework5.Tests.ObjectContext.Shared.projitems" Label="Shared" />
 
   <Import Project="..\Orc.EntityFramework.Tests.ObjectContext.Shared\Orc.EntityFramework.Tests.ObjectContext.Shared.projitems" Label="Shared" />
-
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
 
   <ItemGroup>
     <Compile Include="..\Orc.EntityFramework5.Tests.ObjectContext.Shared\TestObjectContext.Designer.cs">

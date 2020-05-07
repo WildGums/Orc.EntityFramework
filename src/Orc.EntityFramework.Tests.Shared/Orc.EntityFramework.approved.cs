@@ -1,17 +1,17 @@
-﻿[assembly: System.Resources.NeutralResourcesLanguageAttribute("en-US")]
-[assembly: System.Runtime.Versioning.TargetFrameworkAttribute(".NETFramework,Version=v4.6", FrameworkDisplayName=".NET Framework 4.6")]
-public class static ModuleInitializer
+﻿[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
+[assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.7", FrameworkDisplayName=".NET Framework 4.7")]
+public static class ModuleInitializer
 {
     public static void Initialize() { }
 }
 namespace Orc.EntityFramework
 {
-    public class static ConnectionStringHelper
+    public static class ConnectionStringHelper
     {
-        public static string GetConnectionString(this System.Data.Entity.DbContext dbContext) { }
         public static string GetConnectionString(this System.Data.Entity.Core.Objects.ObjectContext objectContext) { }
-        public static void SetConnectionString(this System.Data.Entity.DbContext dbContext, string connectionString) { }
+        public static string GetConnectionString(this System.Data.Entity.DbContext dbContext) { }
         public static void SetConnectionString(this System.Data.Entity.Core.Objects.ObjectContext objectContext, string connectionString) { }
+        public static void SetConnectionString(this System.Data.Entity.DbContext dbContext, string connectionString) { }
     }
     public class ConnectionStringManager : Orc.EntityFramework.IConnectionStringManager
     {
@@ -31,12 +31,12 @@ namespace Orc.EntityFramework
         public TContext Context { get; }
         public int RefCount { get; }
         public void Dispose() { }
+        protected abstract void Initialize(TContext context);
         protected static string GetContextLogName(string databaseNameOrConnectionStringName, string label) { }
         protected static string GetContextName(string databaseNameOrConnectionStringName, string label) { }
         protected static Orc.EntityFramework.ContextManager<TContext> GetManager(string databaseNameOrConnectionStringName, string label, System.Func<Orc.EntityFramework.ContextManager<TContext>> createContext) { }
-        protected abstract void Initialize(TContext context);
     }
-    public class static DbContextExtensions
+    public static class DbContextExtensions
     {
         public static bool ContainsEntityEntry(this System.Data.Entity.DbContext dbContext, object entity) { }
         public static bool ContainsEntityEntry(this System.Data.Entity.DbContext dbContext, object entity, System.Data.Entity.EntityState entityStates) { }
@@ -45,45 +45,45 @@ namespace Orc.EntityFramework
         public static System.Data.Entity.Infrastructure.DbEntityEntry GetEntityEntry(this System.Data.Entity.DbContext dbContext, object entity) { }
         public static System.Data.Entity.Infrastructure.DbEntityEntry GetEntityEntry(this System.Data.Entity.DbContext dbContext, object entity, System.Data.Entity.EntityState entityStates) { }
         public static System.Data.Entity.Core.EntityKey GetEntityKey(this System.Data.Entity.DbContext dbContext, System.Data.Entity.Infrastructure.DbEntityEntry dbEntityEntry) { }
-        public static System.Data.Entity.Core.EntityKey GetEntityKey<TEntity>(this System.Data.Entity.DbContext dbContext, object keyValue) { }
         public static System.Data.Entity.Core.EntityKey GetEntityKey(this System.Data.Entity.DbContext dbContext, System.Type entityType, object keyValue) { }
-        public static System.Data.Entity.Core.Metadata.Edm.EntitySet GetEntitySet(this System.Data.Entity.DbContext dbContext, System.Type entityType) { }
+        public static System.Data.Entity.Core.EntityKey GetEntityKey<TEntity>(this System.Data.Entity.DbContext dbContext, object keyValue) { }
         public static System.Data.Entity.Core.Metadata.Edm.EntitySet GetEntitySet(this System.Data.Entity.Core.Objects.ObjectContext objectContext, System.Type entityType) { }
-        public static string GetEntitySetName<TEntity>(this System.Data.Entity.DbContext dbContext) { }
+        public static System.Data.Entity.Core.Metadata.Edm.EntitySet GetEntitySet(this System.Data.Entity.DbContext dbContext, System.Type entityType) { }
         public static string GetEntitySetName(this System.Data.Entity.DbContext dbContext, System.Type entityType) { }
-        public static string GetFullEntitySetName<TEntity>(this System.Data.Entity.DbContext dbContext) { }
+        public static string GetEntitySetName<TEntity>(this System.Data.Entity.DbContext dbContext) { }
         public static string GetFullEntitySetName(this System.Data.Entity.DbContext dbContext, System.Type entityType) { }
+        public static string GetFullEntitySetName<TEntity>(this System.Data.Entity.DbContext dbContext) { }
         public static System.Data.Entity.Core.Objects.ObjectContext GetObjectContext(this System.Data.Entity.DbContext dbContext) { }
-        public static object GetObjectSet(this System.Data.Entity.DbContext dbContext, System.Type entityType) { }
         public static object GetObjectSet(this System.Data.Entity.Core.Objects.ObjectContext objectContext, System.Type entityType) { }
-        public static string GetTableName(this System.Data.Entity.DbContext context, System.Type entityType) { }
+        public static object GetObjectSet(this System.Data.Entity.DbContext dbContext, System.Type entityType) { }
         public static string GetTableName(this System.Data.Entity.Core.Objects.ObjectContext context, System.Type entityType) { }
+        public static string GetTableName(this System.Data.Entity.DbContext context, System.Type entityType) { }
         public static string GetTableName<TEntity>(this System.Data.Entity.DbContext context)
             where TEntity :  class { }
         public static void SetTransactionLevel(this System.Data.Entity.DbContext dbContext, System.Data.IsolationLevel isolationLevel) { }
     }
+    public static class DbContextManagerHelper { }
     public class DbContextManager<TDbContext> : Orc.EntityFramework.ContextManager<TDbContext>
         where TDbContext : System.Data.Entity.DbContext
     {
+        protected override void Initialize(TDbContext context) { }
         public static Orc.EntityFramework.DbContextManager<TDbContext> GetManager() { }
         public static Orc.EntityFramework.DbContextManager<TDbContext> GetManager(string databaseNameOrConnectionStringName, string label = "default", System.Data.Entity.Infrastructure.DbCompiledModel model = null) { }
-        protected override void Initialize(TDbContext context) { }
     }
-    public class static DbContextManagerHelper { }
-    public class static DbEntityEntryExtensions
+    public static class DbEntityEntryExtensions
     {
         public static object GetCurrentDbValue(this System.Data.Entity.Infrastructure.DbEntityEntry dbEntityEntry, string propertyName) { }
         public static object GetDbValue(this System.Data.Entity.Infrastructure.DbPropertyValues propertyValues, string propertyName) { }
         public static System.Type GetEntityType(this System.Data.Entity.Infrastructure.DbEntityEntry dbEntityEntry) { }
-        public static System.Type GetEntityType(this object entity) { }
         public static System.Type GetEntityType(this System.Type type) { }
+        public static System.Type GetEntityType(this object entity) { }
         public static object GetOriginalDbValue(this System.Data.Entity.Infrastructure.DbEntityEntry dbEntityEntry, string propertyName) { }
     }
-    public class static EfConnectionStringHelper
+    public static class EfConnectionStringHelper
     {
         public static string GetEntityFrameworkConnectionString(System.Type contextType, string connectionString) { }
     }
-    public class static EntityTypeConfigurationExtensions
+    public static class EntityTypeConfigurationExtensions
     {
         public static System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TEntity> IgnoreCatelProperties<TEntity>(this System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TEntity> configuration)
             where TEntity : Catel.Data.ModelBase { }
@@ -97,7 +97,7 @@ namespace Orc.EntityFramework
         object CreateContext(System.Type contextType, string databaseNameOrConnectionStringName, string label, System.Data.Entity.Infrastructure.DbCompiledModel model, System.Data.Entity.Core.Objects.ObjectContext context);
         TContext CreateContext<TContext>(string databaseNameOrConnectionStringName, string label, System.Data.Entity.Infrastructure.DbCompiledModel model, System.Data.Entity.Core.Objects.ObjectContext context);
     }
-    public class static IEntityRepositoryExtensions
+    public static class IEntityRepositoryExtensions
     {
         public static int Count<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
             where TEntity :  class { }
@@ -127,10 +127,6 @@ namespace Orc.EntityFramework
         public static System.Threading.Tasks.Task<TEntity> SingleOrDefaultAsync<TEntity>(this Orc.EntityFramework.Repositories.IEntityRepository<TEntity> repository, System.Linq.Expressions.Expression<System.Func<TEntity, bool>> predicate = null)
             where TEntity :  class { }
     }
-    public class static IsolationHelper
-    {
-        public static string TranslateTransactionLevelToSql(System.Data.IsolationLevel isolationLevel) { }
-    }
     public interface IUnitOfWork : System.IDisposable
     {
         bool IsInTransaction { get; }
@@ -147,12 +143,16 @@ namespace Orc.EntityFramework
         void SaveChanges();
         System.Threading.Tasks.Task SaveChangesAsync();
     }
+    public static class IsolationHelper
+    {
+        public static string TranslateTransactionLevelToSql(System.Data.IsolationLevel isolationLevel) { }
+    }
     public class ObjectContextManager<TObjectContext> : Orc.EntityFramework.ContextManager<TObjectContext>
         where TObjectContext : System.Data.Entity.Core.Objects.ObjectContext
     {
+        protected override void Initialize(TObjectContext context) { }
         public static Orc.EntityFramework.ObjectContextManager<TObjectContext> GetManager() { }
         public static Orc.EntityFramework.ObjectContextManager<TObjectContext> GetManager(string databaseNameOrConnectionStringName, string label = "default") { }
-        protected override void Initialize(TObjectContext context) { }
     }
     public class UnitOfWork : Orc.EntityFramework.IUnitOfWork, System.IDisposable
     {
@@ -183,7 +183,7 @@ namespace Orc.EntityFramework
     public class UnitOfWork<TDbContext> : Orc.EntityFramework.UnitOfWork
         where TDbContext : System.Data.Entity.DbContext
     {
-        public UnitOfWork(TDbContext dbContext = null) { }
+        public UnitOfWork(TDbContext dbContext = default) { }
         protected override void OnDisposing() { }
     }
 }
