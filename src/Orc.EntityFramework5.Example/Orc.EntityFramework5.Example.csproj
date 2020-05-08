@@ -1,24 +1,24 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
+    <!-- EF 5 does not support .NET Core -->
     <TargetFrameworks>net47</TargetFrameworks>
-    <AssemblyName>Orc.EntityFramework.Tests.ObjectContext.NET</AssemblyName>
-    <RootNamespace>Orc.EntityFramework5.Tests.ObjectContext</RootNamespace>
+    <AssemblyName>Orc.EntityFramework5.Example</AssemblyName>
+    <RootNamespace>Orc.EntityFramework5.Example</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
 
   <PropertyGroup>
-    <OutputType>Library</OutputType>
+    <UseWpf>true</UseWpf>
+    <OutputType>WinExe</OutputType>
     <StartupObject />
     <NoWarn>$(NoWarn);SA1652</NoWarn>
-    <ApplicationIcon />
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Catel.Analyzers" Version="1.0.0" PrivateAssets="all" />
     <PackageReference Include="Catel.MVVM" Version="5.12.5" />
     <PackageReference Include="Catel.Fody" Version="4.3.0" PrivateAssets="all" />
-    <PackageReference Include="EntityFramework" Version="5.0.0" PrivateAssets="all" />
     <PackageReference Include="Fody" Version="6.1.1" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -38,27 +38,7 @@
     <ProjectReference Include="..\Orc.EntityFramework5\Orc.EntityFramework5.csproj" />
   </ItemGroup>
 
-  <Import Project="..\Orc.EntityFramework5.Tests.ObjectContext.Shared\Orc.EntityFramework5.Tests.ObjectContext.Shared.projitems" Label="Shared" />
-
-  <Import Project="..\Orc.EntityFramework.Tests.ObjectContext.Shared\Orc.EntityFramework.Tests.ObjectContext.Shared.projitems" Label="Shared" />
-
-  <ItemGroup>
-    <Compile Include="..\Orc.EntityFramework5.Tests.ObjectContext.Shared\TestObjectContext.Designer.cs">
-      <Link>TestObjectContext.Designer.cs</Link>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestObjectContext.edmx</DependentUpon>
-    </Compile>
-    <EntityDeploy Include="..\Orc.EntityFramework5.Tests.ObjectContext.Shared\TestObjectContext.edmx">
-      <Link>TestObjectContext.edmx</Link>
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TestObjectContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="..\Orc.EntityFramework5.Tests.ObjectContext.Shared\TestObjectContext.edmx.diagram">
-      <Link>TestObjectContext.edmx.diagram</Link>
-      <DependentUpon>TestObjectContext.edmx</DependentUpon>
-    </None>
-  </ItemGroup>
+  <Import Project="..\Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems" Label="Shared" />
 
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.props')" />
 </Project>

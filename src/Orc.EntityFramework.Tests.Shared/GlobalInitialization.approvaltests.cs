@@ -12,27 +12,3 @@ using ApprovalTests.Reporters;
 #else
 [assembly: UseReporter(typeof(DiffReporter))]
 #endif
-
-public static class TargetFrameworkResolver
-{
-    public const string Current =
-
-#if EF5
-            "EF5"
-#elif EF6
-            "EF6"
-#endif
-
-        + "." + 
-
-#if NET45
-            "NET45"
-#elif NET46
-            "NET46"
-#elif NET47
-            "NET47"
-#else
-            "Unknown"
-#endif
-        ;
-}

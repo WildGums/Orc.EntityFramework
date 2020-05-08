@@ -1,5 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
+    <!-- EF 5 does not support .NET Core -->
     <TargetFrameworks>net47</TargetFrameworks>
     <AssemblyName>Orc.EntityFramework5.Tests</AssemblyName>
     <RootNamespace>Orc.EntityFramework5.Tests</RootNamespace>
@@ -14,7 +15,6 @@
 
   <ItemGroup>
     <PackageReference Include="ApprovalTests" Version="5.1.1" />
-    <PackageReference Include="Catel.Analyzers" Version="1.0.0" PrivateAssets="all" />
     <PackageReference Include="Catel.Core" Version="5.12.5" />
     <PackageReference Include="Catel.Fody" Version="4.3.0" PrivateAssets="all" />
     <PackageReference Include="EntityFramework" Version="5.0.0" PrivateAssets="all" />
@@ -40,8 +40,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Orc.EntityFramework5\Orc.EntityFramework5.csproj" />
-    <ProjectReference Include="..\Orc.EntityFramework5.Tests.DbContext.NET\Orc.EntityFramework5.Tests.DbContext.NET.csproj" />
-    <ProjectReference Include="..\Orc.EntityFramework5.Tests.ObjectContext.NET\Orc.EntityFramework5.Tests.ObjectContext.NET.csproj" />
+    <ProjectReference Include="..\Orc.EntityFramework5.Tests.DbContext\Orc.EntityFramework5.Tests.DbContext.csproj" />
+    <ProjectReference Include="..\Orc.EntityFramework5.Tests.ObjectContext\Orc.EntityFramework5.Tests.ObjectContext.csproj" />
   </ItemGroup>
 
   <ItemGroup>

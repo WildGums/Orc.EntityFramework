@@ -1,7 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
-    <AssemblyName>Orc.EntityFramework6.Example.NET</AssemblyName>
+    <AssemblyName>Orc.EntityFramework6.Example</AssemblyName>
     <RootNamespace>Orc.EntityFramework6.Example</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <SonarQubeExclude>true</SonarQubeExclude>
@@ -36,8 +36,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Orc.EntityFramework6\Orc.EntityFramework6.csproj" />
   </ItemGroup>
-
-  <Import Project="..\Orc.EntityFramework6.Example.Shared\Orc.EntityFramework6.Example.Shared.projitems" Label="Shared" />
+ 
   <Import Project="..\Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems" Label="Shared" />
 
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.props')" />

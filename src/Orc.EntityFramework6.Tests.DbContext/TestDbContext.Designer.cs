@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Source\Orc.EntityFramework\src\Orc.EntityFramework6.Tests.DbContext\Orc.EntityFramework6.Tests.DbContext.Shared\TestDbContext.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Source\Orc.EntityFramework\src\Orc.EntityFramework6.Tests.DbContext\TestDbContext.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

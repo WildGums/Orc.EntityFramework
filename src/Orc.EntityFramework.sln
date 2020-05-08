@@ -57,55 +57,35 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5", "Orc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework6", "Orc.EntityFramework6\Orc.EntityFramework6.csproj", "{BE45A653-6FF3-4634-BBD3-B68435FE10F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5.Tests.DbContext.NET", "Orc.EntityFramework5.Tests.DbContext.NET\Orc.EntityFramework5.Tests.DbContext.NET.csproj", "{47A7FA6E-52B4-4431-A390-477F2B28E8AF}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.EntityFramework5.Tests.DbContext.Shared", "Orc.EntityFramework5.Tests.DbContext.Shared\Orc.EntityFramework5.Tests.DbContext.Shared.shproj", "{DD14D1C0-E177-4EEF-9E60-25E251E37AFA}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.EntityFramework5.Tests.ObjectContext.Shared", "Orc.EntityFramework5.Tests.ObjectContext.Shared\Orc.EntityFramework5.Tests.ObjectContext.Shared.shproj", "{2082DB66-F342-472A-B7AD-640111C74BFE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5.Tests.ObjectContext.NET", "Orc.EntityFramework5.Tests.ObjectContext.NET\Orc.EntityFramework5.Tests.ObjectContext.NET.csproj", "{089BB89A-89B2-43C7-AB20-EF06C95556C8}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.EntityFramework6.Tests.DbContext.Shared", "Orc.EntityFramework6.Tests.DbContext.Shared\Orc.EntityFramework6.Tests.DbContext.Shared.shproj", "{54E02A51-D105-4FD8-B87F-5285B753A39B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework6.Tests.DbContext.NET", "Orc.EntityFramework6.Tests.DbContext.NET\Orc.EntityFramework6.Tests.DbContext.NET.csproj", "{14F68C00-4E48-45F2-90AB-CAB5BDBABF92}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.EntityFramework5.Example.Shared", "Orc.EntityFramework5.Example.Shared\Orc.EntityFramework5.Example.Shared.shproj", "{44B5DE70-7BF7-4A74-B9CE-91BE680E6DDD}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5.Example.NET", "Orc.EntityFramework5.Example.NET\Orc.EntityFramework5.Example.NET.csproj", "{D5701BEA-9A58-4929-B74F-556D1BA377F6}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.EntityFramework6.Example.Shared", "Orc.EntityFramework6.Example.Shared\Orc.EntityFramework6.Example.Shared.shproj", "{59D01DEE-55B5-4E6E-9A98-CDBC8532834E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework6.Example.NET", "Orc.EntityFramework6.Example.NET\Orc.EntityFramework6.Example.NET.csproj", "{7CBC2557-4D5D-4F4D-BDDF-9C3604B0B4AB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5.Tests", "Orc.EntityFramework5.Tests\Orc.EntityFramework5.Tests.csproj", "{355663BF-D167-41D3-AD1E-8506D7047598}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework6.Tests", "Orc.EntityFramework6.Tests\Orc.EntityFramework6.Tests.csproj", "{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5.Example", "Orc.EntityFramework5.Example\Orc.EntityFramework5.Example.csproj", "{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework6.Example", "Orc.EntityFramework6.Example\Orc.EntityFramework6.Example.csproj", "{7F32E037-95C4-451F-8732-30022978B214}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5.Tests.DbContext", "Orc.EntityFramework5.Tests.DbContext\Orc.EntityFramework5.Tests.DbContext.csproj", "{34947561-5FFB-45F1-B799-F041FF38EF89}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5.Tests.ObjectContext", "Orc.EntityFramework5.Tests.ObjectContext\Orc.EntityFramework5.Tests.ObjectContext.csproj", "{6F99FC7C-7057-4E02-B12F-3E32B2FBE56B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework6.Tests.DbContext", "Orc.EntityFramework6.Tests.DbContext\Orc.EntityFramework6.Tests.DbContext.csproj", "{97D3A4B1-9FBB-4699-8585-E77FA20FCA1C}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Orc.EntityFramework.Tests.ObjectContext.Shared\Orc.EntityFramework.Tests.ObjectContext.Shared.projitems*{089bb89a-89b2-43c7-ab20-ef06c95556c8}*SharedItemsImports = 5
-		Orc.EntityFramework5.Tests.ObjectContext.Shared\Orc.EntityFramework5.Tests.ObjectContext.Shared.projitems*{089bb89a-89b2-43c7-ab20-ef06c95556c8}*SharedItemsImports = 5
-		Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.projitems*{14f68c00-4e48-45f2-90ab-cab5bdbabf92}*SharedItemsImports = 5
-		Orc.EntityFramework6.Tests.DbContext.Shared\Orc.EntityFramework6.Tests.DbContext.Shared.projitems*{14f68c00-4e48-45f2-90ab-cab5bdbabf92}*SharedItemsImports = 5
-		Orc.EntityFramework5.Tests.ObjectContext.Shared\Orc.EntityFramework5.Tests.ObjectContext.Shared.projitems*{2082db66-f342-472a-b7ad-640111c74bfe}*SharedItemsImports = 13
+		Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.projitems*{34947561-5ffb-45f1-b799-f041ff38ef89}*SharedItemsImports = 5
 		Orc.EntityFramework.Tests.Shared\Orc.EntityFramework.Tests.Shared.projitems*{355663bf-d167-41d3-ad1e-8506d7047598}*SharedItemsImports = 5
-		Orc.EntityFramework5.Example.Shared\Orc.EntityFramework5.Example.Shared.projitems*{44b5de70-7bf7-4a74-b9ce-91be680e6ddd}*SharedItemsImports = 13
-		Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.projitems*{47a7fa6e-52b4-4431-a390-477f2b28e8af}*SharedItemsImports = 5
-		Orc.EntityFramework5.Tests.DbContext.Shared\Orc.EntityFramework5.Tests.DbContext.Shared.projitems*{47a7fa6e-52b4-4431-a390-477f2b28e8af}*SharedItemsImports = 5
 		Orc.EntityFramework.Shared\Orc.EntityFramework.Shared.projitems*{5109d944-dc4b-4351-ad38-28670e4ae88d}*SharedItemsImports = 13
 		Orc.EntityFramework.Tests.Shared\Orc.EntityFramework.Tests.Shared.projitems*{53908f0d-0bae-49fc-ae62-dc6dca9dffe9}*SharedItemsImports = 13
-		Orc.EntityFramework6.Tests.DbContext.Shared\Orc.EntityFramework6.Tests.DbContext.Shared.projitems*{54e02a51-d105-4fd8-b87f-5285b753a39b}*SharedItemsImports = 13
-		Orc.EntityFramework6.Example.Shared\Orc.EntityFramework6.Example.Shared.projitems*{59d01dee-55b5-4e6e-9a98-cdbc8532834e}*SharedItemsImports = 13
 		Orc.EntityFramework.Tests.Shared\Orc.EntityFramework.Tests.Shared.projitems*{6ab7bb88-93cf-44ff-ac27-8d05fd1762e5}*SharedItemsImports = 5
-		Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems*{7cbc2557-4d5d-4f4d-bddf-9c3604b0b4ab}*SharedItemsImports = 5
-		Orc.EntityFramework6.Example.Shared\Orc.EntityFramework6.Example.Shared.projitems*{7cbc2557-4d5d-4f4d-bddf-9c3604b0b4ab}*SharedItemsImports = 5
+		Orc.EntityFramework.Tests.ObjectContext.Shared\Orc.EntityFramework.Tests.ObjectContext.Shared.projitems*{6f99fc7c-7057-4e02-b12f-3e32b2fbe56b}*SharedItemsImports = 5
+		Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems*{7f32e037-95c4-451f-8732-30022978b214}*SharedItemsImports = 5
+		Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.projitems*{97d3a4b1-9fbb-4699-8585-e77fa20fca1c}*SharedItemsImports = 5
 		Orc.EntityFramework.Shared\Orc.EntityFramework.Shared.projitems*{be45a653-6ff3-4634-bbd3-b68435fe10f3}*SharedItemsImports = 5
 		Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems*{bedc8b38-6045-453f-b250-735ee4e550fd}*SharedItemsImports = 13
 		Orc.EntityFramework.Shared\Orc.EntityFramework.Shared.projitems*{cb667631-c3e2-40c9-aca4-b636193f3aad}*SharedItemsImports = 5
 		Orc.EntityFramework.Tests.ObjectContext.Shared\Orc.EntityFramework.Tests.ObjectContext.Shared.projitems*{d1d871f9-aebd-4c5b-bd43-e19bd3afa9b4}*SharedItemsImports = 13
-		Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems*{d5701bea-9a58-4929-b74f-556d1ba377f6}*SharedItemsImports = 5
-		Orc.EntityFramework5.Example.Shared\Orc.EntityFramework5.Example.Shared.projitems*{d5701bea-9a58-4929-b74f-556d1ba377f6}*SharedItemsImports = 5
-		Orc.EntityFramework5.Tests.DbContext.Shared\Orc.EntityFramework5.Tests.DbContext.Shared.projitems*{dd14d1c0-e177-4eef-9e60-25e251e37afa}*SharedItemsImports = 13
+		Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems*{de1a0b50-3f3a-4c3a-9800-b4cc5a4e9c87}*SharedItemsImports = 5
 		Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.projitems*{fa412dde-b14c-411d-9729-ade5b2cafb71}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,26 +101,6 @@ Global
 		{BE45A653-6FF3-4634-BBD3-B68435FE10F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE45A653-6FF3-4634-BBD3-B68435FE10F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE45A653-6FF3-4634-BBD3-B68435FE10F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47A7FA6E-52B4-4431-A390-477F2B28E8AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47A7FA6E-52B4-4431-A390-477F2B28E8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47A7FA6E-52B4-4431-A390-477F2B28E8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47A7FA6E-52B4-4431-A390-477F2B28E8AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{089BB89A-89B2-43C7-AB20-EF06C95556C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{089BB89A-89B2-43C7-AB20-EF06C95556C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{089BB89A-89B2-43C7-AB20-EF06C95556C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{089BB89A-89B2-43C7-AB20-EF06C95556C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14F68C00-4E48-45F2-90AB-CAB5BDBABF92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14F68C00-4E48-45F2-90AB-CAB5BDBABF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14F68C00-4E48-45F2-90AB-CAB5BDBABF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14F68C00-4E48-45F2-90AB-CAB5BDBABF92}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5701BEA-9A58-4929-B74F-556D1BA377F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5701BEA-9A58-4929-B74F-556D1BA377F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5701BEA-9A58-4929-B74F-556D1BA377F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5701BEA-9A58-4929-B74F-556D1BA377F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7CBC2557-4D5D-4F4D-BDDF-9C3604B0B4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CBC2557-4D5D-4F4D-BDDF-9C3604B0B4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CBC2557-4D5D-4F4D-BDDF-9C3604B0B4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CBC2557-4D5D-4F4D-BDDF-9C3604B0B4AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{355663BF-D167-41D3-AD1E-8506D7047598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{355663BF-D167-41D3-AD1E-8506D7047598}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{355663BF-D167-41D3-AD1E-8506D7047598}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -149,6 +109,26 @@ Global
 		{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F32E037-95C4-451F-8732-30022978B214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F32E037-95C4-451F-8732-30022978B214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F32E037-95C4-451F-8732-30022978B214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F32E037-95C4-451F-8732-30022978B214}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34947561-5FFB-45F1-B799-F041FF38EF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34947561-5FFB-45F1-B799-F041FF38EF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34947561-5FFB-45F1-B799-F041FF38EF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34947561-5FFB-45F1-B799-F041FF38EF89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F99FC7C-7057-4E02-B12F-3E32B2FBE56B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F99FC7C-7057-4E02-B12F-3E32B2FBE56B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F99FC7C-7057-4E02-B12F-3E32B2FBE56B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F99FC7C-7057-4E02-B12F-3E32B2FBE56B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97D3A4B1-9FBB-4699-8585-E77FA20FCA1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D3A4B1-9FBB-4699-8585-E77FA20FCA1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D3A4B1-9FBB-4699-8585-E77FA20FCA1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D3A4B1-9FBB-4699-8585-E77FA20FCA1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -173,18 +153,13 @@ Global
 		{D1D871F9-AEBD-4C5B-BD43-E19BD3AFA9B4} = {D3EA1078-BF3D-4709-871C-AAFF70B95045}
 		{CB667631-C3E2-40C9-ACA4-B636193F3AAD} = {0787DFC6-AB24-4D00-A8A4-FF203DC7D080}
 		{BE45A653-6FF3-4634-BBD3-B68435FE10F3} = {0787DFC6-AB24-4D00-A8A4-FF203DC7D080}
-		{47A7FA6E-52B4-4431-A390-477F2B28E8AF} = {D174AE41-EC9E-4515-A4BC-5EBB5A4F60EF}
-		{DD14D1C0-E177-4EEF-9E60-25E251E37AFA} = {D174AE41-EC9E-4515-A4BC-5EBB5A4F60EF}
-		{2082DB66-F342-472A-B7AD-640111C74BFE} = {5F3C00FA-6E9E-4CA3-B8FE-4D4AE61D6744}
-		{089BB89A-89B2-43C7-AB20-EF06C95556C8} = {5F3C00FA-6E9E-4CA3-B8FE-4D4AE61D6744}
-		{54E02A51-D105-4FD8-B87F-5285B753A39B} = {6D1D2ECB-4E5A-4001-9FA4-1A930BAE3765}
-		{14F68C00-4E48-45F2-90AB-CAB5BDBABF92} = {6D1D2ECB-4E5A-4001-9FA4-1A930BAE3765}
-		{44B5DE70-7BF7-4A74-B9CE-91BE680E6DDD} = {AF0D3356-1548-4D6F-9136-0371E59E3424}
-		{D5701BEA-9A58-4929-B74F-556D1BA377F6} = {AF0D3356-1548-4D6F-9136-0371E59E3424}
-		{59D01DEE-55B5-4E6E-9A98-CDBC8532834E} = {C4384ACE-AC92-4BAA-A315-1195F27E33BB}
-		{7CBC2557-4D5D-4F4D-BDDF-9C3604B0B4AB} = {C4384ACE-AC92-4BAA-A315-1195F27E33BB}
 		{355663BF-D167-41D3-AD1E-8506D7047598} = {CA95BC2F-86DD-4C77-B876-0A88FBCCC39A}
 		{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5} = {7248B6B9-5F68-4AE5-A39E-9B7708317618}
+		{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87} = {AF0D3356-1548-4D6F-9136-0371E59E3424}
+		{7F32E037-95C4-451F-8732-30022978B214} = {C4384ACE-AC92-4BAA-A315-1195F27E33BB}
+		{34947561-5FFB-45F1-B799-F041FF38EF89} = {D174AE41-EC9E-4515-A4BC-5EBB5A4F60EF}
+		{6F99FC7C-7057-4E02-B12F-3E32B2FBE56B} = {5F3C00FA-6E9E-4CA3-B8FE-4D4AE61D6744}
+		{97D3A4B1-9FBB-4699-8585-E77FA20FCA1C} = {6D1D2ECB-4E5A-4001-9FA4-1A930BAE3765}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C84A8FFF-529B-4F3E-90D7-A8825D67D405}

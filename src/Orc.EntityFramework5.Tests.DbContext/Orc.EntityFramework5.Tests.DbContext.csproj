@@ -1,14 +1,14 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
+    <!-- EF 5 does not support .NET Core -->
     <TargetFrameworks>net47</TargetFrameworks>
-    <AssemblyName>Orc.EntityFramework.Tests.DbContext.NET</AssemblyName>
-    <RootNamespace>Orc.EntityFramework6.Tests.DbContext</RootNamespace>
+    <AssemblyName>Orc.EntityFramework.Tests.DbContext</AssemblyName>
+    <RootNamespace>Orc.EntityFramework.Tests.DbContext</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
 
   <PropertyGroup>
-    <UseWpf>true</UseWpf>
     <OutputType>Library</OutputType>
     <StartupObject />
     <NoWarn>$(NoWarn);SA1652</NoWarn>
@@ -19,7 +19,7 @@
     <PackageReference Include="Catel.Analyzers" Version="1.0.0" PrivateAssets="all" />
     <PackageReference Include="Catel.MVVM" Version="5.12.5" />
     <PackageReference Include="Catel.Fody" Version="4.3.0" PrivateAssets="all" />
-    <PackageReference Include="EntityFramework" Version="6.4.0" PrivateAssets="all" />
+    <PackageReference Include="EntityFramework" Version="5.0.0" PrivateAssets="all" />
     <PackageReference Include="Fody" Version="6.1.1" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -36,52 +36,38 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Orc.EntityFramework6\Orc.EntityFramework6.csproj" />
+    <ProjectReference Include="..\Orc.EntityFramework5\Orc.EntityFramework5.csproj" />
   </ItemGroup>
-
-  <Import Project="..\Orc.EntityFramework6.Tests.DbContext.Shared\Orc.EntityFramework6.Tests.DbContext.Shared.projitems" Label="Shared" />
 
   <Import Project="..\Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.projitems" Label="Shared" />
 
   <ItemGroup>
-    <EntityDeploy Include="..\Orc.EntityFramework6.Tests.DbContext.Shared\TestDbContext.edmx">
-      <Link>TestDbContext.edmx</Link>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EntityDeploy Include="TestDbContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TestDbContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="..\Orc.EntityFramework6.Tests.DbContext.Shared\TestDbContext.edmx.diagram">
-      <Link>TestDbContext.edmx.diagram</Link>
+    <None Include="TestDbContext.edmx.diagram">
       <DependentUpon>TestDbContext.edmx</DependentUpon>
     </None>
-    <Compile Include="..\Orc.EntityFramework6.Tests.DbContext.Shared\DbContextCustomer.cs">
-      <Link>DbContextCustomer.cs</Link>
+    <Compile Update="DbContextCustomer.cs">
       <DependentUpon>TestDbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="..\Orc.EntityFramework6.Tests.DbContext.Shared\DbContextOrder.cs">
-      <Link>DbContextOrder.cs</Link>
+    <Compile Update="DbContextOrder.cs">
       <DependentUpon>TestDbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="..\Orc.EntityFramework6.Tests.DbContext.Shared\DbContextProduct.cs">
-      <Link>DbContextProduct.cs</Link>
+    <Compile Update="DbContextProduct.cs">
       <DependentUpon>TestDbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="..\Orc.EntityFramework6.Tests.DbContext.Shared\TestDbContext.Context.cs">
-      <Link>TestDbContext.Context.cs</Link>
-    </Compile>
-    <Compile Include="..\Orc.EntityFramework6.Tests.DbContext.Shared\TestDbContext.cs">
-      <Link>TestDbContext.cs</Link>
-      <AutoGen>True</AutoGen>
+    <Compile Update="TestDbContext.Designer.cs">
       <DesignTime>True</DesignTime>
-      <DependentUpon>TestDbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="..\Orc.EntityFramework6.Tests.DbContext.Shared\TestDbContext.Designer.cs">
-      <Link>TestDbContext.Designer.cs</Link>
       <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>TestDbContext.edmx</DependentUpon>
     </Compile>
-    <Content Include="..\Orc.EntityFramework6.Tests.DbContext.Shared\TestDbContext.tt">
-      <Link>TestDbContext.tt</Link>
+    <Content Include="TestDbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TestDbContext.cs</LastGenOutput>
     </Content>

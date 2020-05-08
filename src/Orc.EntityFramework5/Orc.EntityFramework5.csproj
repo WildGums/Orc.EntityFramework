@@ -1,5 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
+    <!-- EF 5 does not support .NET Core -->
     <TargetFrameworks>net46;net47</TargetFrameworks>
     <AssemblyName>Orc.EntityFramework</AssemblyName>
     <RootNamespace>Orc.EntityFramework</RootNamespace>
