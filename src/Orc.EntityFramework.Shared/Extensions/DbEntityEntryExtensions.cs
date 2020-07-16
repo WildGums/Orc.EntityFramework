@@ -12,7 +12,6 @@ namespace Orc.EntityFramework
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
-    using System.Management.Instrumentation;
     using System.Text.RegularExpressions;
 
     using Catel;

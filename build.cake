@@ -1,50 +1,39 @@
+//=======================================================
+// DEFINE PARAMETERS
+//=======================================================
+
 // Define the required parameters
-var DefaultSolutionName = "Orc.EntityFramework";
-var DefaultCompany = "WildGums";
-var DefaultRepositoryUrl = string.Format("https://github.com/{0}/{1}", DefaultCompany, DefaultSolutionName);
-var StartYear = 2014;
+var Parameters = new Dictionary<string, object>();
+Parameters["SolutionName"] = "Orc.EntityFramework";
+Parameters["Company"] = "WildGums";
+Parameters["RepositoryUrl"] = string.Format("https://github.com/{0}/{1}", GetBuildServerVariable("Company"), GetBuildServerVariable("SolutionName"));
+Parameters["StartYear"] = "2014";
+Parameters["UseVisualStudioPrerelease"] = "false";
 
 // Note: the rest of the variables should be coming from the build server,
 // see `/deployment/cake/*-variables.cake` for customization options
+// 
+// If required, more variables can be overridden by specifying them via the 
+// Parameters dictionary, but the build server variables will always override
+// them if defined by the build server. For example, to override the code
+// sign wild card, add this to build.cake
+//
+// Parameters["CodeSignWildcard"] = "Orc.EntityFramework";
+
+Parameters["CodeSignWildcard"] = "Orc.EntityFramework";
 
 //=======================================================
-
-// Components
-
-var ComponentsToBuild = new string[]
-{
-    "Orc.EntityFramework5",
-    "Orc.EntityFramework6"
-};
-
+// DEFINE COMPONENTS TO BUILD / PACKAGE
 //=======================================================
 
-// WPF apps
+Components.Add("Orc.EntityFramework5");
+Components.Add("Orc.EntityFramework6");
 
-var WpfAppsToBuild = new string[]
-{
-
-};
-
-//=======================================================
-
-// UWP apps
-
-var UwpAppsToBuild = new string[]
-{
-
-};
+TestProjects.Add("Orc.EntityFramework5.Tests");
+TestProjects.Add("Orc.EntityFramework6.Tests");
 
 //=======================================================
-
-// Test projects
-
-var TestProjectsToBuild = new string[]
-{
-    "Orc.EntityFramework5.Tests",
-    "Orc.EntityFramework6.Tests"
-};
-
+// REQUIRED INITIALIZATION, DO NOT CHANGE
 //=======================================================
 
 // Now all variables are defined, include the tasks, that
