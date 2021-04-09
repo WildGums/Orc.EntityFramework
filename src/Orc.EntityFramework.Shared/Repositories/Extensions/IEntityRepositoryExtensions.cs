@@ -257,7 +257,7 @@ namespace Orc.EntityFramework
         /// <returns>The ensured valid predicate.</returns>
         public static Expression<Func<TEntity, bool>> GetValidPredicate<TEntity>(this Expression<Func<TEntity, bool>> predicate)
         {
-            if (predicate == null)
+            if (predicate is null)
             {
                 predicate = x => true;
             }

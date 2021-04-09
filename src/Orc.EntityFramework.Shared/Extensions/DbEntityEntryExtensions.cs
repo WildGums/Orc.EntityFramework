@@ -81,7 +81,7 @@ namespace Orc.EntityFramework
         {
             Argument.IsNotNull("type", type);
 
-            while (type != null && type.FullName.Contains(".DynamicProxies."))
+            while (type is not null && type.FullName.Contains(".DynamicProxies."))
             {
                 type = type.BaseType;
             }

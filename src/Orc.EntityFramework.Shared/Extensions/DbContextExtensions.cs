@@ -100,7 +100,7 @@ namespace Orc.EntityFramework
             Argument.IsNotNull("dbContext", dbContext);
             Argument.IsNotNull("entity", entity);
 
-            return GetEntityEntry(dbContext, entity) != null;
+            return GetEntityEntry(dbContext, entity) is not null;
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Orc.EntityFramework
             Argument.IsNotNull("dbContext", dbContext);
             Argument.IsNotNull("entity", entity);
 
-            return GetEntityEntry(dbContext, entity, entityStates) != null;
+            return GetEntityEntry(dbContext, entity, entityStates) is not null;
         }
 
         /// <summary>
@@ -287,7 +287,7 @@ namespace Orc.EntityFramework
                 var entitySet = objectContext.MetadataWorkspace.GetEntityContainer(objectContext.DefaultContainerName, DataSpace.CSpace)
                     .BaseEntitySets.FirstOrDefault(bes => bes.ElementType.Name == entityType.Name);
 
-                if (entitySet == null && entityType.BaseType != null)
+                if (entitySet is null && entityType.BaseType is not null)
                 {
                     // recursive method call, should be no problem as the compiler wont allow circular base class dependencies
                     return dbContext.GetEntitySetName(entityType.BaseType);

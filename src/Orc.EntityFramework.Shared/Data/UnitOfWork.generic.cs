@@ -27,7 +27,7 @@ namespace Orc.EntityFramework
         public UnitOfWork(TDbContext dbContext = null)
             : base(dbContext ?? DbContextManager<TDbContext>.GetManager().Context)
         {
-            _isInjectedContext = (dbContext != null);
+            _isInjectedContext = (dbContext is not null);
         }
 
         /// <summary>

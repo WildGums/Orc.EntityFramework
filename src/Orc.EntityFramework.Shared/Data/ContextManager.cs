@@ -39,7 +39,7 @@ namespace Orc.EntityFramework
         private static readonly object _lock = new object();
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
-        private static Dictionary<string, object> _instances = new Dictionary<string, object>();
+        private static readonly Dictionary<string, object> _instances = new Dictionary<string, object>();
         #endregion
 
         #region Fields
@@ -68,7 +68,7 @@ namespace Orc.EntityFramework
             if (string.IsNullOrEmpty(databaseNameOrConnectionStringName))
             {
                 var connectionStringManager = dependencyResolver.TryResolve<IConnectionStringManager>();
-                if (connectionStringManager != null)
+                if (connectionStringManager is not null)
                 {
                     databaseNameOrConnectionStringName = connectionStringManager.GetConnectionString(typeof(TContext), databaseNameOrConnectionStringName, label);
                 }

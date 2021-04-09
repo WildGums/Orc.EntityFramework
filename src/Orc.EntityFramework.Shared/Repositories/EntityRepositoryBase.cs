@@ -96,7 +96,7 @@ namespace Orc.EntityFramework.Repositories
         {
             var query = GetQuery();
 
-            if (predicate != null)
+            if (predicate is not null)
             {
                 query = query.Where(predicate);
             }

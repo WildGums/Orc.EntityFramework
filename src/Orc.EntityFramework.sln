@@ -61,8 +61,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework6.Tests", "Orc.EntityFramework6.Tests\Orc.EntityFramework6.Tests.csproj", "{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5.Example", "Orc.EntityFramework5.Example\Orc.EntityFramework5.Example.csproj", "{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework6.Example", "Orc.EntityFramework6.Example\Orc.EntityFramework6.Example.csproj", "{7F32E037-95C4-451F-8732-30022978B214}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework5.Tests.DbContext", "Orc.EntityFramework5.Tests.DbContext\Orc.EntityFramework5.Tests.DbContext.csproj", "{34947561-5FFB-45F1-B799-F041FF38EF89}"
@@ -85,7 +83,6 @@ Global
 		Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems*{bedc8b38-6045-453f-b250-735ee4e550fd}*SharedItemsImports = 13
 		Orc.EntityFramework.Shared\Orc.EntityFramework.Shared.projitems*{cb667631-c3e2-40c9-aca4-b636193f3aad}*SharedItemsImports = 5
 		Orc.EntityFramework.Tests.ObjectContext.Shared\Orc.EntityFramework.Tests.ObjectContext.Shared.projitems*{d1d871f9-aebd-4c5b-bd43-e19bd3afa9b4}*SharedItemsImports = 13
-		Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems*{de1a0b50-3f3a-4c3a-9800-b4cc5a4e9c87}*SharedItemsImports = 5
 		Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.projitems*{fa412dde-b14c-411d-9729-ade5b2cafb71}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,10 +106,6 @@ Global
 		{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7F32E037-95C4-451F-8732-30022978B214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F32E037-95C4-451F-8732-30022978B214}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F32E037-95C4-451F-8732-30022978B214}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -155,7 +148,6 @@ Global
 		{BE45A653-6FF3-4634-BBD3-B68435FE10F3} = {0787DFC6-AB24-4D00-A8A4-FF203DC7D080}
 		{355663BF-D167-41D3-AD1E-8506D7047598} = {CA95BC2F-86DD-4C77-B876-0A88FBCCC39A}
 		{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5} = {7248B6B9-5F68-4AE5-A39E-9B7708317618}
-		{DE1A0B50-3F3A-4C3A-9800-B4CC5A4E9C87} = {AF0D3356-1548-4D6F-9136-0371E59E3424}
 		{7F32E037-95C4-451F-8732-30022978B214} = {C4384ACE-AC92-4BAA-A315-1195F27E33BB}
 		{34947561-5FFB-45F1-B799-F041FF38EF89} = {D174AE41-EC9E-4515-A4BC-5EBB5A4F60EF}
 		{6F99FC7C-7057-4E02-B12F-3E32B2FBE56B} = {5F3C00FA-6E9E-4CA3-B8FE-4D4AE61D6744}

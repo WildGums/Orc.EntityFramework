@@ -96,7 +96,7 @@ namespace Orc.EntityFramework
         /// <value><c>true</c> if this instance is currently in a transaction; otherwise, <c>false</c>.</value>
         public bool IsInTransaction
         {
-            get { return Transaction != null; }
+            get { return Transaction is not null; }
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Orc.EntityFramework
         {
             Log.Debug("Beginning transaction | {0}", Tag);
 
-            if (Transaction != null)
+            if (Transaction is not null)
             {
                 throw Log.ErrorAndCreateException<InvalidOperationException>("Cannot begin a new transaction while an existing transaction is still running. " +
                     "Please commit or rollback the existing transaction before starting a new one.");
@@ -130,7 +130,7 @@ namespace Orc.EntityFramework
         {
             Log.Debug("Rolling back transaction | {0}", Tag);
 
-            if (Transaction == null)
+            if (Transaction is null)
             {
                 throw Log.ErrorAndCreateException<InvalidOperationException>("Cannot roll back a transaction when there is no transaction running.");
             }
@@ -149,7 +149,7 @@ namespace Orc.EntityFramework
         {
             Log.Debug("Committing transaction | {0}", Tag);
 
-            if (Transaction == null)
+            if (Transaction is null)
             {
                 throw Log.ErrorAndCreateException<InvalidOperationException>("Cannot commit a transaction when there is no transaction running.");
             }
@@ -182,7 +182,7 @@ namespace Orc.EntityFramework
         {
             Log.Debug("Committing transaction async | {0}", Tag);
 
-            if (Transaction == null)
+            if (Transaction is null)
             {
                 throw Log.ErrorAndCreateException<InvalidOperationException>("Cannot commit a transaction when there is no transaction running.");
             }
@@ -232,7 +232,7 @@ namespace Orc.EntityFramework
             where TEntityRepository : IEntityRepository
         {
             var registrationInfo = _serviceLocator.GetRegistrationInfo(typeof(TEntityRepository));
-            if (registrationInfo == null)
+            if (registrationInfo is null)
             {
                 throw Log.ErrorAndCreateException<NotSupportedException>("The specified repository type '{0}' cannot be found. Make sure it is registered in the ServiceLocator.", typeof(TEntityRepository).FullName);
             }
@@ -388,7 +388,7 @@ namespace Orc.EntityFramework
         /// </summary>
         protected void DisposeDbContext()
         {
-            if (DbContext != null)
+            if (DbContext is not null)
             {
                 DbContext.Dispose();
             }
@@ -437,7 +437,7 @@ namespace Orc.EntityFramework
         /// </summary>
         protected virtual void ReleaseTransaction()
         {
-            if (Transaction != null)
+            if (Transaction is not null)
             {
                 Log.Debug("Releasing transaction | {0}", Tag);
 

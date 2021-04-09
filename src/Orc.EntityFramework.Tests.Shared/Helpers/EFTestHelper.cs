@@ -30,7 +30,7 @@ namespace Orc.EntityFramework.Tests
                 using (var repository = new DbContextCustomerRepository(dbContext))
                 {
                     var existingCustomer = repository.FirstOrDefault(x => x.Id == id);
-                    if (existingCustomer == null)
+                    if (existingCustomer is null)
                     {
                         var customer = CreateCustomer(id);
 

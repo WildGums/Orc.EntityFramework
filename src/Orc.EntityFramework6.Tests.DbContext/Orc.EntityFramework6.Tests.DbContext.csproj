@@ -54,6 +54,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TestDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Update="TestDbContext.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TestDbContext.edmx</DependentUpon>
+    </Compile>
     <Content Include="TestDbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TestDbContext.cs</LastGenOutput>
