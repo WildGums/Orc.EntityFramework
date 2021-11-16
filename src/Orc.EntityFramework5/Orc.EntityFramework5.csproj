@@ -1,7 +1,7 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
     <!-- EF 5 does not support .NET Core -->
-    <TargetFrameworks>net46;net47</TargetFrameworks>
+    <TargetFrameworks>net48</TargetFrameworks>
     <AssemblyName>Orc.EntityFramework</AssemblyName>
     <RootNamespace>Orc.EntityFramework</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -38,6 +38,7 @@
   </ItemGroup>
 
   <Import Project="..\Orc.EntityFramework.Shared\Orc.EntityFramework.Shared.projitems" Label="Shared" />
+  
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.explicit.props')" />
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.build.shared.mat.props')" />
 </Project>
