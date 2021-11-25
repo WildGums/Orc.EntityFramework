@@ -25,7 +25,9 @@ namespace Orc.EntityFramework.Repositories
     /// </summary>
     /// <typeparam name="TEntity">The type of the entity.</typeparam>
     /// <typeparam name="TPrimaryKey">The type of the primary key.</typeparam>
+#pragma warning disable IDISP025 // Class with no virtual dispose method should be sealed.
     public class EntityRepositoryBase<TEntity, TPrimaryKey> : IEntityRepository<TEntity, TPrimaryKey>
+#pragma warning restore IDISP025 // Class with no virtual dispose method should be sealed.
         where TEntity : class
     {
         #region Fields

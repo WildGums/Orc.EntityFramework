@@ -86,7 +86,9 @@ namespace Orc.EntityFramework
         /// Gets or sets the transaction.
         /// </summary>
         /// <value>The transaction.</value>
+#pragma warning disable IDISP008 // Don't assign member with injected and created disposables.
         protected DbTransaction Transaction { get; set; }
+#pragma warning restore IDISP008 // Don't assign member with injected and created disposables.
         #endregion
 
         #region IUnitOfWork Members
@@ -117,7 +119,10 @@ namespace Orc.EntityFramework
             OpenConnection();
 
             var objectContext = DbContext.GetObjectContext();
+
+#pragma warning disable IDISP003 // Dispose previous before re-assigning.
             Transaction = objectContext.Connection.BeginTransaction(isolationLevel);
+#pragma warning restore IDISP003 // Dispose previous before re-assigning.
 
             Log.Debug("Began transaction | {0}", Tag);
         }
@@ -390,7 +395,9 @@ namespace Orc.EntityFramework
         {
             if (DbContext is not null)
             {
+#pragma warning disable IDISP007 // Don't dispose injected.
                 DbContext.Dispose();
+#pragma warning restore IDISP007 // Don't dispose injected.
             }
         }
         #endregion

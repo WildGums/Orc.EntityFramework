@@ -29,11 +29,14 @@ namespace Orc.EntityFramework.Tests
             [TestCase]
             public void ReturnsObjectContextForDbContext()
             {
-                var dbContext = new TestDbContextContainer();
+                using (var dbContext = new TestDbContextContainer())
+                {
+#pragma warning disable IDISP001
+                    var objectContext = dbContext.GetObjectContext();
+#pragma warning restore IDISP001
 
-                var objectContext = dbContext.GetObjectContext();
-
-                Assert.IsNotNull(objectContext);
+                    Assert.IsNotNull(objectContext);
+                }
             }
         }
 
@@ -49,20 +52,22 @@ namespace Orc.EntityFramework.Tests
             [TestCase]
             public void ThrowsArgumentNullExceptionForNulEntityType()
             {
-                var dbContext = new TestDbContextContainer();
-
-                ExceptionTester.CallMethodAndExpectException<ArgumentNullException>(() => dbContext.GetEntityKey(null, 1));
+                using (var dbContext = new TestDbContextContainer())
+                {
+                    ExceptionTester.CallMethodAndExpectException<ArgumentNullException>(() => dbContext.GetEntityKey(null, 1));
+                }
             }
 
             [TestCase]
             public void ReturnsCorrectKeyValue()
             {
-                var dbContext = new TestDbContextContainer();
+                using (var dbContext = new TestDbContextContainer())
+                {
+                    var keyValue = dbContext.GetEntityKey(typeof(DbContextProduct), 1);
 
-                var keyValue = dbContext.GetEntityKey(typeof(DbContextProduct), 1);
-
-                Assert.AreEqual("Id", keyValue.EntityKeyValues[0].Key);
-                Assert.AreEqual(1, keyValue.EntityKeyValues[0].Value);
+                    Assert.AreEqual("Id", keyValue.EntityKeyValues[0].Key);
+                    Assert.AreEqual(1, keyValue.EntityKeyValues[0].Value);
+                }
             }
         }
 
@@ -78,11 +83,12 @@ namespace Orc.EntityFramework.Tests
             [TestCase]
             public void ReturnsCorrectEntitySetName()
             {
-                var dbContext = new TestDbContextContainer();
+                using (var dbContext = new TestDbContextContainer())
+                {
+                    var entitySetName = dbContext.GetEntitySetName(typeof(DbContextProduct));
 
-                var entitySetName = dbContext.GetEntitySetName(typeof(DbContextProduct));
-
-                Assert.AreEqual("DbContextProducts", entitySetName);
+                    Assert.AreEqual("DbContextProducts", entitySetName);
+                }
             }
         }
 
@@ -98,11 +104,12 @@ namespace Orc.EntityFramework.Tests
             [TestCase]
             public void ReturnsCorrectEntitySetName()
             {
-                var dbContext = new TestDbContextContainer();
+                using (var dbContext = new TestDbContextContainer())
+                {
+                    var entitySetName = dbContext.GetFullEntitySetName(typeof(DbContextProduct));
 
-                var entitySetName = dbContext.GetFullEntitySetName(typeof(DbContextProduct));
-
-                Assert.AreEqual("TestDbContextContainer.DbContextProducts", entitySetName);
+                    Assert.AreEqual("TestDbContextContainer.DbContextProducts", entitySetName);
+                }
             }   
         }
 
@@ -118,18 +125,21 @@ namespace Orc.EntityFramework.Tests
             [TestCase]
             public void ThrowsArgumentNullExceptionForNullType()
             {
-                var dbContext = new TestDbContextContainer();
-
-                ExceptionTester.CallMethodAndExpectException<ArgumentNullException>(() => dbContext.GetTableName(null));
+                using (var dbContext = new TestDbContextContainer())
+                {
+                    ExceptionTester.CallMethodAndExpectException<ArgumentNullException>(() => dbContext.GetTableName(null));
+                }
             }
 
             [TestCase]
             public void ReturnsTableNameIncludingSchemaForType()
             {
-                var dbContext = new TestDbContextContainer();
-                var tableName = dbContext.GetTableName<DbContextOrder>();
+                using (var dbContext = new TestDbContextContainer())
+                {
+                    var tableName = dbContext.GetTableName<DbContextOrder>();
 
-                Assert.AreEqual("[dbo].[DbContextOrder]", tableName);
+                    Assert.AreEqual("[dbo].[DbContextOrder]", tableName);
+                }
             }
         }
 

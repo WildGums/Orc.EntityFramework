@@ -39,10 +39,15 @@ namespace Orc.EntityFramework
             {
                 Log.Debug("Disposing DbContextManager because this is a non-injected DbContext");
 
-                // Note: we need to get the DbContextManager and dispose it twice (once for the call in the ctor, once for this retrieval call)
                 var dbContextManager = DbContextManager<TDbContext>.GetManager();
+
+#pragma warning disable IDISP007 // Don't dispose injected.
+                // Note: we need to get the DbContextManager and dispose it twice (once for the call in the ctor, once for this retrieval call)
+#pragma warning disable IDISP016 // Don't use disposed instance.
                 dbContextManager.Dispose();
+#pragma warning restore IDISP016 // Don't use disposed instance.
                 dbContextManager.Dispose();
+#pragma warning restore IDISP007 // Don't dispose injected.
             }
         }
     }
