@@ -35,7 +35,7 @@ namespace Orc.EntityFramework
             Argument.IsNotNull("expression", expression);
 
             var objectQuery = query as ObjectQuery<T>;
-            if (objectQuery != null)
+            if (objectQuery is not null)
             {
                 var memberExpression = (MemberExpression)expression.Body;
                 var path = GetIncludePath(memberExpression);
@@ -56,7 +56,7 @@ namespace Orc.EntityFramework
             var path = string.Empty;
 
             var includePathExpression = memberExpression.Expression as MemberExpression;
-            if (includePathExpression != null)
+            if (includePathExpression is not null)
             {
                 path = GetIncludePath(includePathExpression) + ".";
             }

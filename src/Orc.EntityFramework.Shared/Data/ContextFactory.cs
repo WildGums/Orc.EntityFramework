@@ -34,7 +34,7 @@ namespace Orc.EntityFramework
         {
             object createdContext = null; 
 
-            if (model != null)
+            if (model is not null)
             {
                 if (!string.IsNullOrEmpty(databaseNameOrConnectionStringName))
                 {
@@ -45,7 +45,7 @@ namespace Orc.EntityFramework
                     createdContext = Activator.CreateInstance(contextType, model);
                 }
             }
-            else if (context != null)
+            else if (context is not null)
             {
                 createdContext = Activator.CreateInstance(contextType, context, true);
             }

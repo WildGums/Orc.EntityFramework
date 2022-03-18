@@ -31,20 +31,22 @@ namespace Orc.EntityFramework.Tests.Data
             [TestCase]
             public void ThrowsArgumentExceptionForNullOrWhitespaceConnectionString()
             {
-                var dbContext = new TestDbContextContainer();
-
-                ExceptionTester.CallMethodAndExpectException<ArgumentException>(() => ConnectionStringHelper.SetConnectionString(dbContext, null));
-                ExceptionTester.CallMethodAndExpectException<ArgumentException>(() => ConnectionStringHelper.SetConnectionString(dbContext, string.Empty));
+                using (var dbContext = new TestDbContextContainer())
+                {
+                    ExceptionTester.CallMethodAndExpectException<ArgumentException>(() => ConnectionStringHelper.SetConnectionString(dbContext, null));
+                    ExceptionTester.CallMethodAndExpectException<ArgumentException>(() => ConnectionStringHelper.SetConnectionString(dbContext, string.Empty));
+                }
             }
 
             [TestCase]
             public void SetsConnectionString()
             {
-                var dbContext = new TestDbContextContainer();
+                using (var dbContext = new TestDbContextContainer())
+                {
+                    dbContext.SetConnectionString(TestConnectionStrings.DbContextModified);
 
-                dbContext.SetConnectionString(TestConnectionStrings.DbContextModified);
-
-                Assert.AreEqual(TestConnectionStrings.DbContextModified, dbContext.Database.Connection.ConnectionString);
+                    Assert.AreEqual(TestConnectionStrings.DbContextModified, dbContext.Database.Connection.ConnectionString);
+                }
             }
         }
 
@@ -61,22 +63,24 @@ namespace Orc.EntityFramework.Tests.Data
             public void ThrowsArgumentExceptionForNullOrWhitespaceConnectionString()
             {
                 var connectionString = EfConnectionStringHelper.GetEntityFrameworkConnectionString(typeof(TestObjectContextContainer), TestConnectionStrings.ObjectContextDefault);
-                var objectContext = new TestObjectContextContainer(connectionString);
-
-                ExceptionTester.CallMethodAndExpectException<ArgumentException>(() => ConnectionStringHelper.SetConnectionString(objectContext, null));
-                ExceptionTester.CallMethodAndExpectException<ArgumentException>(() => ConnectionStringHelper.SetConnectionString(objectContext, string.Empty));
+                using (var objectContext = new TestObjectContextContainer(connectionString))
+                {
+                    ExceptionTester.CallMethodAndExpectException<ArgumentException>(() => ConnectionStringHelper.SetConnectionString(objectContext, null));
+                    ExceptionTester.CallMethodAndExpectException<ArgumentException>(() => ConnectionStringHelper.SetConnectionString(objectContext, string.Empty));
+                }
             }
 
             [TestCase]
             public void SetsConnectionString()
             {
                 var connectionString = EfConnectionStringHelper.GetEntityFrameworkConnectionString(typeof(TestObjectContextContainer), TestConnectionStrings.ObjectContextDefault);
-                var objectContext = new TestObjectContextContainer(connectionString);
+                using (var objectContext = new TestObjectContextContainer(connectionString))
+                {
+                    objectContext.SetConnectionString(TestConnectionStrings.ObjectContextModified);
 
-                objectContext.SetConnectionString(TestConnectionStrings.ObjectContextModified);
-
-                var expectedConnectionString = EfConnectionStringHelper.GetEntityFrameworkConnectionString(typeof(TestObjectContextContainer), TestConnectionStrings.ObjectContextModified);
-                Assert.AreEqual(expectedConnectionString, objectContext.Connection.ConnectionString);
+                    var expectedConnectionString = EfConnectionStringHelper.GetEntityFrameworkConnectionString(typeof(TestObjectContextContainer), TestConnectionStrings.ObjectContextModified);
+                    Assert.AreEqual(expectedConnectionString, objectContext.Connection.ConnectionString);
+                }
             }
         }
 
@@ -92,26 +96,28 @@ namespace Orc.EntityFramework.Tests.Data
             [TestCase]
             public void ReturnsNamedConnectionString()
             {
-                var context = new TestDbContextContainer();
+                using (var context = new TestDbContextContainer())
+                {
+                    var expectedString = string.Format("{0};Application Name=EntityFrameworkMUE", TestConnectionStrings.DbContextDefault);
 
-                var expectedString = string.Format("{0};Application Name=EntityFrameworkMUE", TestConnectionStrings.DbContextDefault);
+                    var connectionString = context.GetConnectionString();
 
-                var connectionString = context.GetConnectionString();
-
-                Assert.IsTrue(string.Equals(expectedString, connectionString, StringComparison.OrdinalIgnoreCase));
+                    Assert.IsTrue(string.Equals(expectedString, connectionString, StringComparison.OrdinalIgnoreCase));
+                }
             }
 
             [TestCase]
             public void ReturnsRealConnectionString()
             {
-                var context = new TestDbContextContainer();
+                using (var context = new TestDbContextContainer())
+                {
+                    var expectedString = TestConnectionStrings.DbContextModified;
 
-                var expectedString = TestConnectionStrings.DbContextModified;
+                    context.SetConnectionString(TestConnectionStrings.DbContextModified);
+                    var connectionString = context.GetConnectionString();
 
-                context.SetConnectionString(TestConnectionStrings.DbContextModified);
-                var connectionString = context.GetConnectionString();
-
-                Assert.IsTrue(string.Equals(expectedString, connectionString, StringComparison.OrdinalIgnoreCase));
+                    Assert.IsTrue(string.Equals(expectedString, connectionString, StringComparison.OrdinalIgnoreCase));
+                }
             }
         }
 
@@ -127,26 +133,28 @@ namespace Orc.EntityFramework.Tests.Data
             [TestCase]
             public void ReturnsNamedConnectionString()
             {
-                var context = new TestObjectContextContainer();
+                using (var context = new TestObjectContextContainer())
+                {
+                    var expectedString = EfConnectionStringHelper.GetEntityFrameworkConnectionString(typeof(TestObjectContextContainer), TestConnectionStrings.ObjectContextDefault);
 
-                var expectedString = EfConnectionStringHelper.GetEntityFrameworkConnectionString(typeof(TestObjectContextContainer), TestConnectionStrings.ObjectContextDefault);
+                    var connectionString = context.GetConnectionString();
 
-                var connectionString = context.GetConnectionString();
-
-                Assert.IsTrue(string.Equals(expectedString, connectionString, StringComparison.OrdinalIgnoreCase));
+                    Assert.IsTrue(string.Equals(expectedString, connectionString, StringComparison.OrdinalIgnoreCase));
+                }
             }
 
             [TestCase]
             public void ReturnsRealConnectionString()
             {
-                var context = new TestObjectContextContainer();
+                using (var context = new TestObjectContextContainer())
+                {
+                    var expectedString = EfConnectionStringHelper.GetEntityFrameworkConnectionString(typeof(TestObjectContextContainer), TestConnectionStrings.ObjectContextModified);
 
-                var expectedString = EfConnectionStringHelper.GetEntityFrameworkConnectionString(typeof(TestObjectContextContainer), TestConnectionStrings.ObjectContextModified);
+                    context.SetConnectionString(TestConnectionStrings.ObjectContextModified);
+                    var connectionString = context.GetConnectionString();
 
-                context.SetConnectionString(TestConnectionStrings.ObjectContextModified);
-                var connectionString = context.GetConnectionString();
-
-                Assert.IsTrue(string.Equals(expectedString, connectionString, StringComparison.OrdinalIgnoreCase));
+                    Assert.IsTrue(string.Equals(expectedString, connectionString, StringComparison.OrdinalIgnoreCase));
+                }
             }
         }
     }

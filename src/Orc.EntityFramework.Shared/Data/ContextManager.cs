@@ -32,14 +32,16 @@ namespace Orc.EntityFramework
     /// Note that this class is a base class to share the logic between the <see cref="DbContextManager{TDbContext}"/> and 
     /// <see cref="ObjectContextManager{TObjectContext}"/>.
     /// </remarks>
+#pragma warning disable IDISP025 // Class with no virtual dispose method should be sealed.
     public abstract class ContextManager<TContext> : IDisposable
+#pragma warning restore IDISP025 // Class with no virtual dispose method should be sealed.
         where TContext : class, IDisposable
     {
         #region Constants
         private static readonly object _lock = new object();
         private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
-        private static Dictionary<string, object> _instances = new Dictionary<string, object>();
+        private static readonly Dictionary<string, object> _instances = new Dictionary<string, object>();
         #endregion
 
         #region Fields
@@ -68,7 +70,7 @@ namespace Orc.EntityFramework
             if (string.IsNullOrEmpty(databaseNameOrConnectionStringName))
             {
                 var connectionStringManager = dependencyResolver.TryResolve<IConnectionStringManager>();
-                if (connectionStringManager != null)
+                if (connectionStringManager is not null)
                 {
                     databaseNameOrConnectionStringName = connectionStringManager.GetConnectionString(typeof(TContext), databaseNameOrConnectionStringName, label);
                 }
