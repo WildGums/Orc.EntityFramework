@@ -5,6 +5,7 @@
     <AssemblyName>Orc.EntityFramework</AssemblyName>
     <RootNamespace>Orc.EntityFramework</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
+    <OutputTargetAssemblyDirectory>Orc.EntityFramework5</OutputTargetAssemblyDirectory>
     <PackageId>Orc.EntityFramework5</PackageId>
     <PackageVersion>1.0.0-alpha0001</PackageVersion>
     <Description>Entity Framework 5 library.</Description>

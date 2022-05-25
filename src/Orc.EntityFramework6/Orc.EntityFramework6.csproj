@@ -4,6 +4,7 @@
     <AssemblyName>Orc.EntityFramework</AssemblyName>
     <RootNamespace>Orc.EntityFramework</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
+    <OutputTargetAssemblyDirectory>Orc.EntityFramework6</OutputTargetAssemblyDirectory>
     <PackageId>Orc.EntityFramework6</PackageId>
     <PackageVersion>1.0.0-alpha0001</PackageVersion>
     <Description>Entity Framework 6 library.</Description>
