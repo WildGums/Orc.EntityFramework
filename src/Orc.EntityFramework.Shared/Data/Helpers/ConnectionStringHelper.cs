@@ -1,10 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ConnectionStringHelper.cs" company="WildGums">
-//   Copyright (c) 2008 - 2017 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace Orc.EntityFramework
+﻿namespace Orc.EntityFramework
 {
     using System;
     using System.Configuration;
@@ -22,7 +16,6 @@ namespace Orc.EntityFramework
     /// </summary>
     public static class ConnectionStringHelper
     {
-        #region Methods
         /// <summary>
         /// Sets the connection string of the specified <see cref="DbContext"/>.
         /// </summary>
@@ -103,6 +96,5 @@ namespace Orc.EntityFramework
 
             return connectionString;
         }
-        #endregion
     }
 }
