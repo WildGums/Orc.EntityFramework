@@ -1,11 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ConfigurationExtensions.cs" company="WildGums">
-//   Copyright (c) 2008 - 2017 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.EntityFramework
+﻿namespace Orc.EntityFramework
 {
     using System.Data.Entity.ModelConfiguration;
     using Catel.Data;
@@ -15,7 +8,6 @@ namespace Orc.EntityFramework
     /// </summary>
     public static class EntityTypeConfigurationExtensions
     {
-        #region Methods
         /// <summary>
         /// Ignores the catel properties for database mappings.
         /// </summary>
@@ -40,6 +32,5 @@ namespace Orc.EntityFramework
 
             return configuration;
         }
-        #endregion
     }
 }

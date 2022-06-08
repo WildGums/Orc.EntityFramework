@@ -91,6 +91,13 @@ namespace Orc.EntityFramework
         private string ContextLabel { get; set; }
 
         /// <summary>
+        /// Gets or sets whether verbose logging should be enabled.
+        /// <para />
+        /// The default value is <c>false</c>.
+        /// </summary>
+        protected bool EnableVerboseLogging { get; set; }
+
+        /// <summary>
         /// Gets the context object.
         /// </summary>
         public TContext Context
@@ -138,7 +145,10 @@ namespace Orc.EntityFramework
             {
                 _refCount += 1;
 
-                Log.Debug("Referencing {0}, new ref count is {1}", _contextLogName, _refCount);
+                if (EnableVerboseLogging)
+                {
+                    Log.Debug("Referencing {0}, new ref count is {1}", _contextLogName, _refCount);
+                }
             }
         }
 
@@ -148,11 +158,17 @@ namespace Orc.EntityFramework
             {
                 _refCount -= 1;
 
-                Log.Debug("Dereferencing {0}, new ref count is {1}", _contextLogName, _refCount);
+                if (EnableVerboseLogging)
+                {
+                    Log.Debug("Dereferencing {0}, new ref count is {1}", _contextLogName, _refCount);
+                }
 
                 if (_refCount == 0)
                 {
-                    Log.Debug("Disposing DbContext {0} because it reached a ref count of 0", _contextLogName);
+                    if (EnableVerboseLogging)
+                    {
+                        Log.Debug("Disposing DbContext {0} because it reached a ref count of 0", _contextLogName);
+                    }
 
                     _context.Dispose();
                     _instances.Remove(ContextLabel);
@@ -182,13 +198,13 @@ namespace Orc.EntityFramework
 
                 if (_instances.ContainsKey(contextLabel))
                 {
-                    Log.Debug("Returning existing instance for {0}", contextLogLabel);
+                    //Log.Debug("Returning existing instance for {0}", contextLogLabel);
 
                     mgr = (ContextManager<TContext>)(_instances[contextLabel]);
                 }
                 else
                 {
-                    Log.Debug("Creating new instance for {0}", contextLogLabel);
+                    //Log.Debug("Creating new instance for {0}", contextLogLabel);
 
                     mgr = createContext();
                     mgr.ContextLabel = contextLabel;

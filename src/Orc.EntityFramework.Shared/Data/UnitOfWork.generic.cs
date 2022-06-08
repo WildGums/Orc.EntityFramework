@@ -37,7 +37,10 @@ namespace Orc.EntityFramework
         {
             if (!_isInjectedContext)
             {
-                Log.Debug("Disposing DbContextManager because this is a non-injected DbContext");
+                if (EnableVerboseLogging)
+                {
+                    Log.Debug("Disposing DbContextManager because this is a non-injected DbContext");
+                }
 
                 var dbContextManager = DbContextManager<TDbContext>.GetManager();
 
