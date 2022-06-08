@@ -77,6 +77,13 @@ namespace Orc.EntityFramework
         protected DbContext DbContext { get; private set; }
 
         /// <summary>
+        /// Gets or sets whether verbose logging should be enabled.
+        /// <para />
+        /// The default value is <c>false</c>.
+        /// </summary>
+        protected bool EnableVerboseLogging { get; set; }
+
+        /// <summary>
         /// Gets the tag.
         /// </summary>
         /// <value>The tag.</value>
@@ -124,7 +131,10 @@ namespace Orc.EntityFramework
             Transaction = objectContext.Connection.BeginTransaction(isolationLevel);
 #pragma warning restore IDISP003 // Dispose previous before re-assigning.
 
-            Log.Debug("Began transaction | {0}", Tag);
+            if (EnableVerboseLogging)
+            {
+                Log.Debug("Began transaction | {0}", Tag);
+            }
         }
 
         /// <summary>
@@ -143,7 +153,10 @@ namespace Orc.EntityFramework
             Transaction.Rollback();
             ReleaseTransaction();
 
-            Log.Debug("Rolling back transaction | {0}", Tag);
+            if (EnableVerboseLogging)
+            {
+                Log.Debug("Rolling back transaction | {0}", Tag);
+            }
         }
 
         /// <summary>
@@ -167,7 +180,10 @@ namespace Orc.EntityFramework
 
                 ReleaseTransaction();
 
-                Log.Debug("Committed transaction | {0}", Tag);
+                if (EnableVerboseLogging)
+                {
+                    Log.Debug("Committed transaction | {0}", Tag);
+                }
             }
             catch (Exception ex)
             {
@@ -200,7 +216,10 @@ namespace Orc.EntityFramework
 
                 ReleaseTransaction();
 
-                Log.Debug("Committed transaction async | {0}", Tag);
+                if (EnableVerboseLogging)
+                { 
+                    Log.Debug("Committed transaction async | {0}", Tag);
+                }
             }
             catch (Exception ex)
             {
@@ -258,7 +277,10 @@ namespace Orc.EntityFramework
             var objectContext = DbContext.GetObjectContext();
             objectContext.Refresh(refreshMode, collection);
 
-            Log.Debug("Refreshed collection | {0}", Tag);
+            if (EnableVerboseLogging)
+            {
+                Log.Debug("Refreshed collection | {0}", Tag);
+            }
         }
 
 #if EF_ASYNC
@@ -274,7 +296,10 @@ namespace Orc.EntityFramework
             var objectContext = DbContext.GetObjectContext();
             await objectContext.RefreshAsync(refreshMode, collection);
 
-            Log.Debug("Refreshed collection async | {0}", Tag);
+            if (EnableVerboseLogging)
+            { 
+                Log.Debug("Refreshed collection async | {0}", Tag);
+            }
         }
 #endif
 
@@ -290,7 +315,10 @@ namespace Orc.EntityFramework
             var objectContext = DbContext.GetObjectContext();
             objectContext.Refresh(refreshMode, entity);
 
-            Log.Debug("Refreshed entity | {0}", Tag);
+            if (EnableVerboseLogging)
+            {
+                Log.Debug("Refreshed entity | {0}", Tag);
+            }
         }
 
 #if EF_ASYNC
@@ -306,7 +334,10 @@ namespace Orc.EntityFramework
             var objectContext = DbContext.GetObjectContext();
             await objectContext.RefreshAsync(refreshMode, entity);
 
-            Log.Debug("Refreshed entity async | {0}", Tag);
+            if (EnableVerboseLogging)
+            { 
+                Log.Debug("Refreshed entity async | {0}", Tag);
+            }
         }
 #endif
 
@@ -325,7 +356,10 @@ namespace Orc.EntityFramework
 
             DbContext.SaveChanges();
 
-            Log.Debug("Saved changes | {0}", Tag);
+            if (EnableVerboseLogging)
+            {
+                Log.Debug("Saved changes | {0}", Tag);
+            }
         }
 
 #if EF_ASYNC
@@ -344,7 +378,10 @@ namespace Orc.EntityFramework
 
             await DbContext.SaveChangesAsync();
 
-            Log.Debug("Saved changes async | {0}", Tag);
+            if (EnableVerboseLogging)
+            { 
+                Log.Debug("Saved changes async | {0}", Tag);
+            }
         }
 #endif
         #endregion
@@ -413,11 +450,17 @@ namespace Orc.EntityFramework
             var objectContext = DbContext.GetObjectContext();
             if (objectContext.Connection.State != ConnectionState.Open)
             {
-                Log.Debug("Opening connection | {0}", Tag);
+                if (EnableVerboseLogging)
+                {
+                    Log.Debug("Opening connection | {0}", Tag);
+                }
 
                 objectContext.Connection.Open();
 
-                Log.Debug("Opened connection | {0}", Tag);
+                if (EnableVerboseLogging)
+                {
+                    Log.Debug("Opened connection | {0}", Tag);
+                }
             }
         }
 
@@ -430,11 +473,17 @@ namespace Orc.EntityFramework
             var objectContext = DbContext.GetObjectContext();
             if (objectContext.Connection.State != ConnectionState.Open)
             {
-                Log.Debug("Opening connection async | {0}", Tag);
+                if (EnableVerboseLogging)
+                { 
+                    Log.Debug("Opening connection async | {0}", Tag);
+                }
 
                 await objectContext.Connection.OpenAsync();
 
-                Log.Debug("Opened connection async | {0}", Tag);
+                if (EnableVerboseLogging)
+                { 
+                    Log.Debug("Opened connection async | {0}", Tag);
+                }
             }
         }
 #endif
@@ -451,7 +500,10 @@ namespace Orc.EntityFramework
                 Transaction.Dispose();
                 Transaction = null;
 
-                Log.Debug("Released transaction | {0}", Tag);
+                if (EnableVerboseLogging)
+                {
+                    Log.Debug("Released transaction | {0}", Tag);
+                }
             }
         }
         #endregion

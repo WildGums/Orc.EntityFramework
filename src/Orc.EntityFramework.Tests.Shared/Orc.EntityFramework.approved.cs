@@ -29,6 +29,7 @@ namespace Orc.EntityFramework
     {
         protected ContextManager(string databaseNameOrConnectionStringName, string label, System.Data.Entity.Infrastructure.DbCompiledModel model, System.Data.Entity.Core.Objects.ObjectContext context) { }
         public TContext Context { get; }
+        protected bool EnableVerboseLogging { get; set; }
         public int RefCount { get; }
         public void Dispose() { }
         protected abstract void Initialize(TContext context);
@@ -158,6 +159,7 @@ namespace Orc.EntityFramework
     {
         public UnitOfWork(System.Data.Entity.DbContext context, string tag = null) { }
         protected System.Data.Entity.DbContext DbContext { get; }
+        protected bool EnableVerboseLogging { get; set; }
         public bool IsInTransaction { get; }
         protected string Tag { get; }
         protected System.Data.Common.DbTransaction Transaction { get; set; }

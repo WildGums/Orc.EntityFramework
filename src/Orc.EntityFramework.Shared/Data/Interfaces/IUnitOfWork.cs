@@ -1,10 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="IUnitOfWork.cs" company="WildGums">
-//   Copyright (c) 2008 - 2017 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace Orc.EntityFramework
+﻿namespace Orc.EntityFramework
 {
     using System;
     using System.Collections;
@@ -30,15 +24,12 @@ namespace Orc.EntityFramework
     /// </summary>
     public interface IUnitOfWork : IDisposable
     {
-        #region Properties
         /// <summary>
         /// Gets a value indicating whether this instance is currently in a transaction.
         /// </summary>
         /// <value><c>true</c> if this instance is currently in a transaction; otherwise, <c>false</c>.</value>
         bool IsInTransaction { get; }
-        #endregion
 
-        #region Methods
         /// <summary>
         /// Gets the repository that is created specificially for this unit of work.
         /// <para />
@@ -131,6 +122,5 @@ namespace Orc.EntityFramework
         /// </summary>
         Task CommitTransactionAsync();
 #endif
-        #endregion
     }
 }
