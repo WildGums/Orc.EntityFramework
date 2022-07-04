@@ -27,8 +27,8 @@ Parameters["CodeSignWildcard"] = "Orc.EntityFramework";
 //=======================================================
 
 // Dependencies required for unit testing
-Components.Add("Orc.EntityFramework5");
-Components.Add("Orc.EntityFramework6");
+Dependencies.Add("Orc.EntityFramework5");
+Dependencies.Add("Orc.EntityFramework6");
 Dependencies.Add("Orc.EntityFramework5.Tests.DbContext");
 Dependencies.Add("Orc.EntityFramework5.Tests.ObjectContext");
 Dependencies.Add("Orc.EntityFramework6.Tests.DbContext");
