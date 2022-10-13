@@ -25,23 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D3EA1078
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{672BFA2E-9F93-496F-B188-40579FB5D301}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EF6", "EF6", "{C4384ACE-AC92-4BAA-A315-1195F27E33BB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EF6", "EF6", "{7248B6B9-5F68-4AE5-A39E-9B7708317618}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.EntityFramework.Shared", "Orc.EntityFramework.Shared\Orc.EntityFramework.Shared.shproj", "{5109D944-DC4B-4351-AD38-28670E4AE88D}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.EntityFramework.Example.Shared", "Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.shproj", "{BEDC8B38-6045-453F-B250-735EE4E550FD}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.EntityFramework.Tests.Shared", "Orc.EntityFramework.Tests.Shared\Orc.EntityFramework.Tests.Shared.shproj", "{53908F0D-0BAE-49FC-AE62-DC6DCA9DFFE9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contexts", "Contexts", "{2487F545-C8F1-412A-AFC4-078DCB3A6F62}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DbContext", "DbContext", "{6D1D2ECB-4E5A-4001-9FA4-1A930BAE3765}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.EntityFramework.Tests.DbContext.Shared", "Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.shproj", "{FA412DDE-B14C-411D-9729-ADE5B2CAFB71}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Orc.EntityFramework.Tests.ObjectContext.Shared", "Orc.EntityFramework.Tests.ObjectContext.Shared\Orc.EntityFramework.Tests.ObjectContext.Shared.shproj", "{D1D871F9-AEBD-4C5B-BD43-E19BD3AFA9B4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.EntityFramework6", "Orc.EntityFramework6\Orc.EntityFramework6.csproj", "{BE45A653-6FF3-4634-BBD3-B68435FE10F3}"
 EndProject
@@ -81,32 +67,14 @@ Global
 		{0787DFC6-AB24-4D00-A8A4-FF203DC7D080} = {A8A1A4EE-E04A-43AB-90C9-41E7B82EE1E5}
 		{D3EA1078-BF3D-4709-871C-AAFF70B95045} = {A8A1A4EE-E04A-43AB-90C9-41E7B82EE1E5}
 		{672BFA2E-9F93-496F-B188-40579FB5D301} = {A8A1A4EE-E04A-43AB-90C9-41E7B82EE1E5}
-		{C4384ACE-AC92-4BAA-A315-1195F27E33BB} = {672BFA2E-9F93-496F-B188-40579FB5D301}
-		{7248B6B9-5F68-4AE5-A39E-9B7708317618} = {D3EA1078-BF3D-4709-871C-AAFF70B95045}
-		{5109D944-DC4B-4351-AD38-28670E4AE88D} = {0787DFC6-AB24-4D00-A8A4-FF203DC7D080}
-		{BEDC8B38-6045-453F-B250-735EE4E550FD} = {672BFA2E-9F93-496F-B188-40579FB5D301}
-		{53908F0D-0BAE-49FC-AE62-DC6DCA9DFFE9} = {D3EA1078-BF3D-4709-871C-AAFF70B95045}
-		{2487F545-C8F1-412A-AFC4-078DCB3A6F62} = {7248B6B9-5F68-4AE5-A39E-9B7708317618}
+		{2487F545-C8F1-412A-AFC4-078DCB3A6F62} = {D3EA1078-BF3D-4709-871C-AAFF70B95045}
 		{6D1D2ECB-4E5A-4001-9FA4-1A930BAE3765} = {2487F545-C8F1-412A-AFC4-078DCB3A6F62}
-		{FA412DDE-B14C-411D-9729-ADE5B2CAFB71} = {D3EA1078-BF3D-4709-871C-AAFF70B95045}
-		{D1D871F9-AEBD-4C5B-BD43-E19BD3AFA9B4} = {D3EA1078-BF3D-4709-871C-AAFF70B95045}
 		{BE45A653-6FF3-4634-BBD3-B68435FE10F3} = {0787DFC6-AB24-4D00-A8A4-FF203DC7D080}
-		{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5} = {7248B6B9-5F68-4AE5-A39E-9B7708317618}
-		{7F32E037-95C4-451F-8732-30022978B214} = {C4384ACE-AC92-4BAA-A315-1195F27E33BB}
+		{6AB7BB88-93CF-44FF-AC27-8D05FD1762E5} = {D3EA1078-BF3D-4709-871C-AAFF70B95045}
+		{7F32E037-95C4-451F-8732-30022978B214} = {672BFA2E-9F93-496F-B188-40579FB5D301}
 		{97D3A4B1-9FBB-4699-8585-E77FA20FCA1C} = {6D1D2ECB-4E5A-4001-9FA4-1A930BAE3765}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C84A8FFF-529B-4F3E-90D7-A8825D67D405}
-	EndGlobalSection
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Orc.EntityFramework.Shared\Orc.EntityFramework.Shared.projitems*{5109d944-dc4b-4351-ad38-28670e4ae88d}*SharedItemsImports = 13
-		Orc.EntityFramework.Tests.Shared\Orc.EntityFramework.Tests.Shared.projitems*{53908f0d-0bae-49fc-ae62-dc6dca9dffe9}*SharedItemsImports = 13
-		Orc.EntityFramework.Tests.Shared\Orc.EntityFramework.Tests.Shared.projitems*{6ab7bb88-93cf-44ff-ac27-8d05fd1762e5}*SharedItemsImports = 5
-		Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems*{7f32e037-95c4-451f-8732-30022978b214}*SharedItemsImports = 5
-		Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.projitems*{97d3a4b1-9fbb-4699-8585-e77fa20fca1c}*SharedItemsImports = 5
-		Orc.EntityFramework.Shared\Orc.EntityFramework.Shared.projitems*{be45a653-6ff3-4634-bbd3-b68435fe10f3}*SharedItemsImports = 5
-		Orc.EntityFramework.Example.Shared\Orc.EntityFramework.Example.Shared.projitems*{bedc8b38-6045-453f-b250-735ee4e550fd}*SharedItemsImports = 13
-		Orc.EntityFramework.Tests.ObjectContext.Shared\Orc.EntityFramework.Tests.ObjectContext.Shared.projitems*{d1d871f9-aebd-4c5b-bd43-e19bd3afa9b4}*SharedItemsImports = 13
-		Orc.EntityFramework.Tests.DbContext.Shared\Orc.EntityFramework.Tests.DbContext.Shared.projitems*{fa412dde-b14c-411d-9729-ade5b2cafb71}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
