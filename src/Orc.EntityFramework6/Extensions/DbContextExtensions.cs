@@ -487,7 +487,7 @@
                     throw Log.ErrorAndCreateException<NotSupportedException>($"Could not find object set sql");
                 }
 
-                var regex = new Regex("FROM (?<table>.*) AS");
+                var regex = new Regex("FROM (?<table>.*) AS", RegexOptions.None, TimeSpan.FromSeconds(1));
                 var match = regex.Match(sql);
 
                 var table = match.Groups["table"].Value;
