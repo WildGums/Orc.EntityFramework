@@ -200,7 +200,7 @@
             where TEntity : class
         {
             ArgumentNullException.ThrowIfNull(repository);
-            Argument.IsNotNull("predicate", predicate);
+            ArgumentNullException.ThrowIfNull(predicate);
 
             var entities = repository.Find(predicate);
 

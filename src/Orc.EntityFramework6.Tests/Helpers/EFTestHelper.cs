@@ -1,10 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EFTestHelper.cs" company="WildGums">
-//   Copyright (c) 2008 - 2017 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace Orc.EntityFramework.Tests
+﻿namespace Orc.EntityFramework.Tests
 {
     using DbContext;
     using DbContext.Repositories;
