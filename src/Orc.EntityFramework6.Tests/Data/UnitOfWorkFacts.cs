@@ -17,15 +17,15 @@
             {
                 using (var uow = new UnitOfWork<TestDbContextContainer>())
                 {
-                    Assert.IsFalse(uow.IsInTransaction);
+                    Assert.That(uow.IsInTransaction, Is.False);
 
                     uow.BeginTransaction();
 
-                    Assert.IsTrue(uow.IsInTransaction);
+                    Assert.That(uow.IsInTransaction, Is.True);
 
                     uow.CommitTransaction();
 
-                    Assert.IsFalse(uow.IsInTransaction);
+                    Assert.That(uow.IsInTransaction, Is.False);
                 }
             }
         }
@@ -102,13 +102,13 @@
                     var orderRepository = uow.GetRepository<IDbContextOrderRepository>();
 
                     var customer = customerRepository.GetByKey(451);
-                    Assert.IsNotNull(customer);
+                    Assert.That(customer, Is.Not.Null);
 
                     var product = productRepository.GetByKey(451);
-                    Assert.IsNotNull(product);
+                    Assert.That(product, Is.Not.Null);
 
                     var order = orderRepository.FirstOrDefault(x => x.CustomerId == 451 && x.ProductId == 451);
-                    Assert.IsNotNull(order);
+                    Assert.That(order, Is.Not.Null);
                 }
             }
 
@@ -132,7 +132,7 @@
                     }
                     catch (Exception)
                     {
-                        Assert.IsFalse(uow.IsInTransaction);
+                        Assert.That(uow.IsInTransaction, Is.False);
                     }
                 }
             }
@@ -171,7 +171,7 @@
 
                     var customer = customerRepository.GetByKey(401);
 
-                    Assert.IsNotNull(customer);
+                    Assert.That(customer, Is.Not.Null);
                 }
             }
         }

@@ -16,10 +16,10 @@
 
                 using (manager = DbContextManager<TestDbContextContainer>.GetManager())
                 {
-                    Assert.AreEqual(1, manager.RefCount);
+                    Assert.That(manager.RefCount, Is.EqualTo(1));
                 }
 
-                Assert.AreEqual(0, manager.RefCount);
+                Assert.That(manager.RefCount, Is.EqualTo(0));
             }
 
             [TestCase]
@@ -29,24 +29,24 @@
 
                 using (manager = DbContextManager<TestDbContextContainer>.GetManager())
                 {
-                    Assert.AreEqual(1, manager.RefCount);
+                    Assert.That(manager.RefCount, Is.EqualTo(1));
 
                     using (DbContextManager<TestDbContextContainer>.GetManager())
                     {
-                        Assert.AreEqual(2, manager.RefCount);
+                        Assert.That(manager.RefCount, Is.EqualTo(2));
 
                         using (DbContextManager<TestDbContextContainer>.GetManager())
                         {
-                            Assert.AreEqual(3, manager.RefCount);
+                            Assert.That(manager.RefCount, Is.EqualTo(3));
                         }
 
-                        Assert.AreEqual(2, manager.RefCount);
+                        Assert.That(manager.RefCount, Is.EqualTo(2));
                     }
 
-                    Assert.AreEqual(1, manager.RefCount);
+                    Assert.That(manager.RefCount, Is.EqualTo(1));
                 }
 
-                Assert.AreEqual(0, manager.RefCount);
+                Assert.That(manager.RefCount, Is.EqualTo(0));
             }
         }
     }

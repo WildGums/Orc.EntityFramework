@@ -25,7 +25,7 @@
                     var objectContext = dbContext.GetObjectContext();
 #pragma warning restore IDISP001
 
-                    Assert.IsNotNull(objectContext);
+                    Assert.That(objectContext, Is.Not.Null);
                 }
             }
         }
@@ -55,8 +55,8 @@
                 {
                     var keyValue = dbContext.GetEntityKey(typeof(DbContextProduct), 1);
 
-                    Assert.AreEqual("Id", keyValue.EntityKeyValues[0].Key);
-                    Assert.AreEqual(1, keyValue.EntityKeyValues[0].Value);
+                    Assert.That(keyValue.EntityKeyValues[0].Key, Is.EqualTo("Id"));
+                    Assert.That(keyValue.EntityKeyValues[0].Value, Is.EqualTo(1));
                 }
             }
         }
@@ -77,7 +77,7 @@
                 {
                     var entitySetName = dbContext.GetEntitySetName(typeof(DbContextProduct));
 
-                    Assert.AreEqual("DbContextProducts", entitySetName);
+                    Assert.That(entitySetName, Is.EqualTo("DbContextProducts"));
                 }
             }
         }
@@ -98,7 +98,7 @@
                 {
                     var entitySetName = dbContext.GetFullEntitySetName(typeof(DbContextProduct));
 
-                    Assert.AreEqual("TestDbContextContainer.DbContextProducts", entitySetName);
+                    Assert.That(entitySetName, Is.EqualTo("TestDbContextContainer.DbContextProducts"));
                 }
             }   
         }
@@ -128,7 +128,7 @@
                 {
                     var tableName = dbContext.GetTableName<DbContextOrder>();
 
-                    Assert.AreEqual("[dbo].[DbContextOrder]", tableName);
+                    Assert.That(tableName, Is.EqualTo("[dbo].[DbContextOrder]"));
                 }
             }
         }

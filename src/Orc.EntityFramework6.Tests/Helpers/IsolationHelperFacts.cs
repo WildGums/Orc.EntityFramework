@@ -18,7 +18,7 @@
                 var expectedValue = "SET TRANSACTION LEVEL ISOLATION LEVEL READ UNCOMMITTED;";
                 var actualValue = IsolationHelper.TranslateTransactionLevelToSql(IsolationLevel.ReadUncommitted);
 
-                Assert.AreEqual(expectedValue, actualValue);
+                Assert.That(actualValue, Is.EqualTo(expectedValue));
             }
             #endregion
         }

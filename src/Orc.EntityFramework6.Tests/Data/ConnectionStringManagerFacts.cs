@@ -14,7 +14,7 @@
             {
                 var connectionStringManager = new ConnectionStringManager();
 
-                Assert.AreEqual(null, connectionStringManager.GetConnectionString(typeof(TestDbContextContainer), null, null));
+                Assert.That(connectionStringManager.GetConnectionString(typeof(TestDbContextContainer), null, null), Is.EqualTo(null));
             }
         }
     }

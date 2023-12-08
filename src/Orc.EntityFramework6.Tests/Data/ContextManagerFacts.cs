@@ -18,7 +18,7 @@
             {
                 using (var manager = DbContextManager<TestDbContextContainer>.GetManager())
                 {
-                    Assert.IsNotNull(manager);
+                    Assert.That(manager, Is.Not.Null);
                 }
             }
 

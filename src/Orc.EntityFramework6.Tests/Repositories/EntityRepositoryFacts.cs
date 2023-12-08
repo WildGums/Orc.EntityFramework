@@ -28,7 +28,7 @@
                 {
                     using (var repository = new DbContextCustomerRepository(dbContext))
                     {
-                        Assert.IsNull(repository.GetByKey(12345));
+                        Assert.That(repository.GetByKey(12345), Is.Null);
                     }
                 }
             }
@@ -44,7 +44,7 @@
 
                         var existingCustomer = repository.GetByKey(42);
 
-                        Assert.IsNotNull(existingCustomer);
+                        Assert.That(existingCustomer, Is.Not.Null);
                     }
                 }
             }
@@ -76,8 +76,8 @@
 
                         var customer = repository.Single(x => x.Id == 1);
 
-                        Assert.IsNotNull(customer);
-                        Assert.AreEqual(1, customer.Id);
+                        Assert.That(customer, Is.Not.Null);
+                        Assert.That(customer.Id, Is.EqualTo(1));
                     }
                 }
             }
@@ -94,7 +94,7 @@
                     using (var repository = new DbContextCustomerRepository(dbContext))
                     {
                         var customer = repository.SingleOrDefault(x => x.Id == 999);
-                        Assert.IsNull(customer);
+                        Assert.That(customer, Is.Null);
                     }
                 }
             }
@@ -110,8 +110,8 @@
 
                         var customer = repository.SingleOrDefault(x => x.Id == 1);
 
-                        Assert.IsNotNull(customer);
-                        Assert.AreEqual(1, customer.Id);
+                        Assert.That(customer, Is.Not.Null);
+                        Assert.That(customer.Id, Is.EqualTo(1));
                     }
                 }
             }
@@ -143,8 +143,8 @@
 
                         var customer = repository.First();
 
-                        Assert.IsNotNull(customer);
-                        Assert.AreEqual(1, customer.Id);
+                        Assert.That(customer, Is.Not.Null);
+                        Assert.That(customer.Id, Is.EqualTo(1));
                     }
                 }
             }
@@ -161,7 +161,7 @@
                     using (var repository = new DbContextCustomerRepository(dbContext))
                     {
                         var customer = repository.FirstOrDefault(x => x.Id == 999);
-                        Assert.IsNull(customer);
+                        Assert.That(customer, Is.Null);
                     }
                 }
             }
@@ -177,8 +177,8 @@
 
                         var customer = repository.FirstOrDefault();
 
-                        Assert.IsNotNull(customer);
-                        Assert.AreEqual(1, customer.Id);
+                        Assert.That(customer, Is.Not.Null);
+                        Assert.That(customer.Id, Is.EqualTo(1));
                     }
                 }
             }
@@ -213,7 +213,7 @@
                         dbContext.SaveChanges();
 
                         var fetchedCustomer = repository.GetByKey(1234);
-                        Assert.AreEqual(customer, fetchedCustomer);
+                        Assert.That(fetchedCustomer, Is.EqualTo(customer));
                     }
                 }  
             }
@@ -248,7 +248,7 @@
                         dbContext.SaveChanges();
 
                         var fetchedCustomer = repository.GetByKey(1235);
-                        Assert.AreEqual(customer, fetchedCustomer);
+                        Assert.That(fetchedCustomer, Is.EqualTo(customer));
                     }
                 }
             }
@@ -280,7 +280,7 @@
 
                         var customer1 = repository.GetByKey(201);
 
-                        Assert.IsNotNull(customer1);
+                        Assert.That(customer1, Is.Not.Null);
 
                         repository.Delete(customer1);
 
@@ -288,7 +288,7 @@
 
                         var customer2 = repository.GetByKey(201);
 
-                        Assert.IsNull(customer2);
+                        Assert.That(customer2, Is.Null);
                     }
                 }
             }
@@ -322,9 +322,9 @@
 
                         dbContext.SaveChanges();
 
-                        Assert.IsNull(repository.GetByKey(201));
-                        Assert.IsNull(repository.GetByKey(202));
-                        Assert.IsNull(repository.GetByKey(203));
+                        Assert.That(repository.GetByKey(201), Is.Null);
+                        Assert.That(repository.GetByKey(202), Is.Null);
+                        Assert.That(repository.GetByKey(203), Is.Null);
                     }
                 }
             }
@@ -363,8 +363,8 @@
 
                         var customer2 = repository.GetByKey(301);
 
-                        Assert.IsNotNull(customer2);
-                        Assert.AreEqual("John Doe", customer2.Name);
+                        Assert.That(customer2, Is.Not.Null);
+                        Assert.That(customer2.Name, Is.EqualTo("John Doe"));
                     }
                 }
             }
@@ -386,7 +386,7 @@
 
                         var customers = repository.Find(x => x.Id >= 100 && x.Id <= 102).ToList();
 
-                        Assert.AreEqual(3, customers.Count);
+                        Assert.That(customers.Count, Is.EqualTo(3));
                     }
                 }
             }
@@ -408,7 +408,7 @@
 
                         var customers = repository.GetAll().ToList();
 
-                        Assert.IsTrue(customers.Count >= 3);
+                        Assert.That(customers.Count >= 3, Is.True);
                     }
                 }
             }
@@ -430,7 +430,7 @@
 
                         var customerCount = repository.Count(x => x.Id >= 100 && x.Id <= 102);
 
-                        Assert.AreEqual(3, customerCount);
+                        Assert.That(customerCount, Is.EqualTo(3));
                     }
                 }
             }
