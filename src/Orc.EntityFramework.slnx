@@ -1,0 +1,29 @@
+<Solution>
+  <Folder Name="/misc/">
+    <File Path="Directory.build.project.props" />
+    <File Path="Directory.build.props" />
+    <File Path="Directory.build.shared.explicit.props" />
+    <File Path="Directory.build.shared.implicit.props" />
+    <File Path="Directory.build.shared.mat.props" />
+    <File Path="Directory.build.targets" />
+    <File Path="GlobalSuppressions.cs" />
+    <File Path="MethodTimeLogger.cs" />
+    <File Path="nuget.config" />
+    <File Path="Orc.EntityFramework.sln.DotSettings" />
+    <File Path="SolutionAssemblyInfo.cs" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Core/">
+    <Project Path="Orc.EntityFramework6/Orc.EntityFramework6.csproj" />
+  </Folder>
+  <Folder Name="/src/Example/">
+    <Project Path="Orc.EntityFramework6.Example/Orc.EntityFramework6.Example.csproj" />
+  </Folder>
+  <Folder Name="/src/Tests/">
+    <Project Path="Orc.EntityFramework6.Tests/Orc.EntityFramework6.Tests.csproj" />
+  </Folder>
+  <Folder Name="/src/Tests/Contexts/" />
+  <Folder Name="/src/Tests/Contexts/DbContext/">
+    <Project Path="Orc.EntityFramework6.Tests.DbContext/Orc.EntityFramework6.Tests.DbContext.csproj" />
+  </Folder>
+</Solution>
