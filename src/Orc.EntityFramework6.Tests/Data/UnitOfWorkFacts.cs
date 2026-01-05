@@ -1,21 +1,25 @@
 ﻿namespace Orc.EntityFramework.Tests
 {
     using System;
-
-    using Catel.Data;
+    using System.Threading;
     using DbContext;
     using DbContext.Repositories;
+    using Microsoft.Extensions.DependencyInjection;
     using NUnit.Framework;
 
     public class UnitOfWorkFacts
     {
-        [TestFixture]
+        [TestFixture, RequiresThread(ApartmentState.STA)]
         public class TheIsInTransactionProperty
         {
             [TestCase]
             public void ReturnsTrueWhenInTransaction()
             {
-                using (var uow = new UnitOfWork<TestDbContextContainer>())
+                var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+
+                using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+                using (var uow = serviceProvider.GetRequiredService<IUnitOfWork<TestDbContextContainer>>())
                 {
                     Assert.That(uow.IsInTransaction, Is.False);
 
@@ -36,7 +40,11 @@
             [TestCase]
             public void ThrowsInvalidOperationExceptionWhenCalledWhenAlreadyInTransaction()
             {
-                using (var uow = new UnitOfWork<TestDbContextContainer>())
+                var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+
+                using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+                using (var uow = serviceProvider.GetRequiredService<IUnitOfWork<TestDbContextContainer>>())
                 {
                     uow.BeginTransaction();
 
@@ -51,7 +59,11 @@
             [TestCase]
             public void ThrowsInvalidOperationExceptionWhenCalledWhenNotInTransaction()
             {
-                using (var uow = new UnitOfWork<TestDbContextContainer>())
+                var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+
+                using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+                using (var uow = serviceProvider.GetRequiredService<IUnitOfWork<TestDbContextContainer>>())
                 {
                     Assert.Throws<InvalidOperationException>(() => uow.RollBackTransaction());
                 }
@@ -60,13 +72,17 @@
             // TODO: Check if this item can correctly rollback transactions
         }
 
-        [TestFixture]
+        [TestFixture, RequiresThread(ApartmentState.STA)]
         public class TheCommitTransactionMethod
         {
             [TestCase]
             public void ThrowsInvalidOperationExceptionWhenCalledWhenNotInTransaction()
             {
-                using (var uow = new UnitOfWork<TestDbContextContainer>())
+                var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+
+                using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+                using (var uow = serviceProvider.GetRequiredService<IUnitOfWork<TestDbContextContainer>>())
                 {
                     Assert.Throws<InvalidOperationException>(() => uow.CommitTransaction());
                 }
@@ -75,7 +91,11 @@
             [TestCase]
             public void CorrectlyCommitsTransaction()
             {
-                using (var uow = new UnitOfWork<TestDbContextContainer>())
+                var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+
+                using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+                using (var uow = serviceProvider.GetRequiredService<IUnitOfWork<TestDbContextContainer>>())
                 {
                     var customerRepository = uow.GetRepository<IDbContextCustomerRepository>();
                     var productRepository = uow.GetRepository<IDbContextProductRepository>();
@@ -89,13 +109,20 @@
                     var product = EFTestHelper.CreateProduct(451);
                     productRepository.Add(product);
 
-                    var order = new DbContextOrder { OrderCreated = DateTime.Now, Amount = 1, CustomerId = 451, ProductId = 451 };
+                    var order = new DbContextOrder
+                    {
+                        OrderCreated = DateTime.Now,
+                        Amount = 1,
+                        CustomerId = 451,
+                        ProductId = 451
+                    };
+
                     orderRepository.Add(order);
 
                     uow.CommitTransaction();
                 }
 
-                using (var uow = new UnitOfWork<TestDbContextContainer>())
+                using (var uow = serviceProvider.GetRequiredService<IUnitOfWork<TestDbContextContainer>>())
                 {
                     var customerRepository = uow.GetRepository<IDbContextCustomerRepository>();
                     var productRepository = uow.GetRepository<IDbContextProductRepository>();
@@ -115,13 +142,23 @@
             [TestCase]
             public void CorrectlyRollbacksTransactionWhenAnErrorOccursWhileSaving()
             {
-                using (var uow = new UnitOfWork<TestDbContextContainer>())
+                var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+
+                using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+                using (var uow = serviceProvider.GetRequiredService<IUnitOfWork<TestDbContextContainer>>())
                 {
                     var orderRepository = uow.GetRepository<IDbContextOrderRepository>();
 
                     uow.BeginTransaction();
 
-                    var order = new DbContextOrder { Amount = 1, CustomerId = 999, ProductId = 999 };
+                    var order = new DbContextOrder
+                    {
+                        Amount = 1,
+                        CustomerId = 999,
+                        ProductId = 999
+                    };
+
                     orderRepository.Add(order);
 
                     try
@@ -138,13 +175,17 @@
             }
         }
 
-        [TestFixture]
+        [TestFixture, RequiresThread(ApartmentState.STA)]
         public class TheSaveChangesMethod
         {
             [TestCase]
             public void ThrowsInvalidOperationExceptionWhenCalledInsideTransaction()
             {
-                using (var uow = new UnitOfWork<TestDbContextContainer>())
+                var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+
+                using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+                using (var uow = serviceProvider.GetRequiredService<IUnitOfWork<TestDbContextContainer>>())
                 {
                     uow.BeginTransaction();
 
@@ -155,7 +196,11 @@
             [TestCase]
             public void CorrectlySavesChangesWhenNotInTransaction()
             {
-                using (var uow = new UnitOfWork<TestDbContextContainer>())
+                var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+
+                using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+                using (var uow = serviceProvider.GetRequiredService<IUnitOfWork<TestDbContextContainer>>())
                 {
                     var customerRepository = uow.GetRepository<IDbContextCustomerRepository>();
 
@@ -165,7 +210,7 @@
                     uow.SaveChanges();
                 }
 
-                using (var uow = new UnitOfWork<TestDbContextContainer>())
+                using (var uow = serviceProvider.GetRequiredService<IUnitOfWork<TestDbContextContainer>>())
                 {
                     var customerRepository = uow.GetRepository<IDbContextCustomerRepository>();
 

@@ -2,11 +2,8 @@
 {
     using Catel.Data;
     using DbContext;
+    using Microsoft.Extensions.DependencyInjection;
     using NUnit.Framework;
-
-#if EF5
-    using ObjectContext;
-#endif
 
     public class ContextManagerFacts
     {
@@ -16,22 +13,18 @@
             [TestCase]
             public void WorksForDbContext()
             {
-                using (var manager = DbContextManager<TestDbContextContainer>.GetManager())
+                var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+
+                using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+                var connectionStringManager = serviceProvider.GetRequiredService<IConnectionStringManager>();
+                var contextFactory = serviceProvider.GetRequiredService<IContextFactory>();
+
+                using (var manager = DbContextManager<TestDbContextContainer>.GetManager(connectionStringManager, contextFactory))
                 {
                     Assert.That(manager, Is.Not.Null);
                 }
             }
-
-#if EF5
-            [TestCase]
-            public void WorksForObjectContext()
-            {
-                using (var manager = ObjectContextManager<TestObjectContextContainer>.GetManager())
-                {
-                    Assert.IsNotNull(manager);
-                }
-            }
-#endif
         }
     }
 }

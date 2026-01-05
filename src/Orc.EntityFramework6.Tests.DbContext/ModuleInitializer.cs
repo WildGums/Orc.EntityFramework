@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
-using Catel.IoC;
-using Orc.EntityFramework.Tests.DbContext.Repositories;
+﻿using System.Runtime.CompilerServices;
 
 /// <summary>
 /// Class that gets called as soon as the module is loaded.
@@ -16,10 +14,5 @@ public static class ModuleInitializer
     [ModuleInitializer]
     public static void Initialize()
     {
-        var serviceLocator = ServiceLocator.Default;
-
-        serviceLocator.RegisterType<IDbContextCustomerRepository, DbContextCustomerRepository>(registrationType: RegistrationType.Transient);
-        serviceLocator.RegisterType<IDbContextOrderRepository, DbContextOrderRepository>(registrationType: RegistrationType.Transient);
-        serviceLocator.RegisterType<IDbContextProductRepository, DbContextProductRepository>(registrationType: RegistrationType.Transient);
     }
 }

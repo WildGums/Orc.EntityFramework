@@ -22,8 +22,11 @@
         /// </summary>
         /// <param name="databaseNameOrConnectionStringName">Name of the database name or connection string.</param>
         /// <param name="label">The label.</param>
-        private ObjectContextManager(string databaseNameOrConnectionStringName, string label) 
-            : base(databaseNameOrConnectionStringName, label, null, null) { }
+        /// <param name="connectionStringManager"></param>
+        /// <param name="contextFactory"></param>
+        private ObjectContextManager(string databaseNameOrConnectionStringName, string label,
+            IConnectionStringManager connectionStringManager, IContextFactory contextFactory) 
+            : base(databaseNameOrConnectionStringName, label, null, null, connectionStringManager, contextFactory) { }
 
         /// <summary>
         /// Initializes the specified context.
@@ -38,9 +41,10 @@
         /// Gets the ContextManager object for the specified database.
         /// </summary>
         /// <returns>The <see cref="ObjectContextManager{TObjectContext}" />.</returns>
-        public static ObjectContextManager<TObjectContext> GetManager()
+        public static ObjectContextManager<TObjectContext> GetManager(IConnectionStringManager connectionStringManager, 
+            IContextFactory contextFactory)
         {
-            return GetManager(string.Empty);
+            return GetManager(string.Empty, string.Empty, connectionStringManager, contextFactory);
         }
 
         /// <summary>
@@ -48,12 +52,22 @@
         /// </summary>
         /// <param name="databaseNameOrConnectionStringName">The database name or connection string.</param>
         /// <param name="label">Label for this context.</param>
+        /// <param name="connectionStringManager"></param>
+        /// <param name="contextFactory"></param>
         /// <returns>The ContextManager.</returns>
-        public static ObjectContextManager<TObjectContext> GetManager(string databaseNameOrConnectionStringName, string label = "default")
+        public static ObjectContextManager<TObjectContext> GetManager(string databaseNameOrConnectionStringName, string label,
+            IConnectionStringManager connectionStringManager, IContextFactory contextFactory)
         {
-            Argument.IsNotNullOrWhitespace("label", label);
+            if (string.IsNullOrWhiteSpace(label))
+            {
+                label = "default";
+            }
 
-            return (ObjectContextManager<TObjectContext>)GetManager(databaseNameOrConnectionStringName, label, () => { return new ObjectContextManager<TObjectContext>(databaseNameOrConnectionStringName, label); });
+            return (ObjectContextManager<TObjectContext>)GetManager(databaseNameOrConnectionStringName, label, () => 
+            { 
+                return new ObjectContextManager<TObjectContext>(databaseNameOrConnectionStringName, label, 
+                    connectionStringManager, contextFactory); 
+            });
         }
     }
 }

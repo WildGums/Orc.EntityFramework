@@ -4,15 +4,20 @@
     using System.Collections;
     using System.Data;
     using System.Data.Entity;
-    using Catel.IoC;
     using Repositories;
 
 #if EF_ASYNC
     using System.Threading.Tasks;
 #endif
 
-    using SaveOptions = System.Data.Entity.Core.Objects.SaveOptions;
     using System.Data.Entity.Core.Objects;
+    using Microsoft.Extensions.DependencyInjection;
+
+    public interface IUnitOfWork<TDbContext> : IUnitOfWork
+        where TDbContext : DbContext
+    {
+        
+    }
 
     /// <summary>
     /// Interface defining a unit of work.
@@ -26,13 +31,13 @@
         bool IsInTransaction { get; }
 
         /// <summary>
-        /// Gets the repository that is created specificially for this unit of work.
+        /// Gets the repository that is created specifically for this unit of work.
         /// <para />
         /// Note that the following conditions must be met: <br />
         /// <list type="number">
         /// <item>
         /// <description>
-        /// The container must be registered in the <see cref="ServiceLocator" /> as <see cref="RegistrationType.Transient" /> type. If the
+        /// The container must be registered in the <see cref="ServiceCollection" /> as <see cref="ServiceLifetime.Transient" /> type. If the
         /// repository is declared as non-transient, it will be instantiated as new instance anyway.
         /// </description>
         /// </item>

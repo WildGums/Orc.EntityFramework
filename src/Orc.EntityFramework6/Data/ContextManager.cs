@@ -2,12 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
     using System.Threading;
     using Catel;
     using Catel.IoC;
     using Catel.Logging;
-    using System.Data.Entity.Core.Objects;
+    using Microsoft.Extensions.Logging;
 
     /// <summary>
     /// Provides an automated way to reuse Entity Framework context objects within the context of a single data portal operation.
@@ -27,7 +28,8 @@
         where TContext : class, IDisposable
     {
         private static readonly object _lock = new object();
-        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+
+        private static readonly ILogger Logger = LogManager.GetLogger(typeof(ContextManager<TContext>));
 
         private static readonly Dictionary<string, object> _instances = new Dictionary<string, object>();
 
@@ -43,29 +45,26 @@
         /// <param name="label">The label.</param>
         /// <param name="model">The model.</param>
         /// <param name="context">The context.</param>
-        protected ContextManager(string databaseNameOrConnectionStringName, string label, DbCompiledModel? model, ObjectContext? context)
+        /// <param name="connectionStringManager"></param>
+        /// <param name="contextFactory"></param>
+        protected ContextManager(string databaseNameOrConnectionStringName, string label,
+            DbCompiledModel? model, ObjectContext? context,
+            IConnectionStringManager connectionStringManager, IContextFactory contextFactory)
         {
             _label = label;
             _contextLogName = GetContextLogName(databaseNameOrConnectionStringName, label);
             ContextLabel = string.Empty;
 
-            var dependencyResolver = IoCConfiguration.DefaultDependencyResolver;
-
             // Option to override or late-bind connection string
             if (string.IsNullOrEmpty(databaseNameOrConnectionStringName))
             {
-                var connectionStringManager = dependencyResolver.Resolve<IConnectionStringManager>();
-                if (connectionStringManager is not null)
+                var connectionString = connectionStringManager.GetConnectionString(typeof(TContext), databaseNameOrConnectionStringName, label);
+                if (!string.IsNullOrEmpty(connectionString))
                 {
-                    var connectionString = connectionStringManager.GetConnectionString(typeof(TContext), databaseNameOrConnectionStringName, label);
-                    if (!string.IsNullOrEmpty(connectionString))
-                    {
-                        databaseNameOrConnectionStringName = connectionString;
-                    }
+                    databaseNameOrConnectionStringName = connectionString;
                 }
             }
 
-            var contextFactory = dependencyResolver.ResolveRequired<IContextFactory>();
             _context = contextFactory.CreateRequiredContext<TContext>(databaseNameOrConnectionStringName, label, model, context);
 
             Initialize(_context);
@@ -130,7 +129,7 @@
 
                 if (EnableVerboseLogging)
                 {
-                    Log.Debug("Referencing {0}, new ref count is {1}", _contextLogName, _refCount);
+                    Logger.LogDebug("Referencing {0}, new ref count is {1}", _contextLogName, _refCount);
                 }
             }
         }
@@ -143,14 +142,14 @@
 
                 if (EnableVerboseLogging)
                 {
-                    Log.Debug("Dereferencing {0}, new ref count is {1}", _contextLogName, _refCount);
+                    Logger.LogDebug("Dereferencing {0}, new ref count is {1}", _contextLogName, _refCount);
                 }
 
                 if (_refCount == 0)
                 {
                     if (EnableVerboseLogging)
                     {
-                        Log.Debug("Disposing DbContext {0} because it reached a ref count of 0", _contextLogName);
+                        Logger.LogDebug("Disposing DbContext {0} because it reached a ref count of 0", _contextLogName);
                     }
 
                     _context.Dispose();
@@ -181,13 +180,13 @@
 
                 if (_instances.ContainsKey(contextLabel))
                 {
-                    //Log.Debug("Returning existing instance for {0}", contextLogLabel);
+                    //Logger.LogDebug("Returning existing instance for {0}", contextLogLabel);
 
                     mgr = (ContextManager<TContext>)(_instances[contextLabel]);
                 }
                 else
                 {
-                    //Log.Debug("Creating new instance for {0}", contextLogLabel);
+                    //Logger.LogDebug("Creating new instance for {0}", contextLogLabel);
 
                     mgr = createContext();
                     mgr.ContextLabel = contextLabel;

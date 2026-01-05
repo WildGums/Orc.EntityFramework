@@ -285,7 +285,7 @@
 
                 if (entitySet is null)
                 {
-                    throw Log.ErrorAndCreateException<NotSupportedException>(string.Format("No EntitySet has been found for the provided Type '{0}'", entityType));
+                    throw Logger.LogErrorAndCreateException<NotSupportedException>(string.Format("No EntitySet has been found for the provided Type '{0}'", entityType));
                 }
 
                 return entitySet.Name;
@@ -354,7 +354,7 @@
             var createObjectSetMethod = objectContext.GetType().GetMethodEx("CreateObjectSet", new Type[] { });
             if (createObjectSetMethod is null)
             {
-                throw Log.ErrorAndCreateException<NotSupportedException>($"No CreateObjectSet has been found for object context");
+                throw Logger.LogErrorAndCreateException<NotSupportedException>($"No CreateObjectSet has been found for object context");
             }
 
             var genericCreateObjectSetMethod = createObjectSetMethod.MakeGenericMethod(entityType);
@@ -478,13 +478,13 @@
                 var methodInfo = objectSet?.GetType().GetMethodEx("ToTraceString");
                 if (methodInfo is null)
                 {
-                    throw Log.ErrorAndCreateException<NotSupportedException>($"No ToTraceString has been found on the object set");
+                    throw Logger.LogErrorAndCreateException<NotSupportedException>($"No ToTraceString has been found on the object set");
                 }
 
                 var sql = (string?)methodInfo.Invoke(objectSet, new object?[] { });
                 if (string.IsNullOrEmpty(sql))
                 {
-                    throw Log.ErrorAndCreateException<NotSupportedException>($"Could not find object set sql");
+                    throw Logger.LogErrorAndCreateException<NotSupportedException>($"Could not find object set sql");
                 }
 
                 var regex = new Regex("FROM (?<table>.*) AS", RegexOptions.None, TimeSpan.FromSeconds(1));
