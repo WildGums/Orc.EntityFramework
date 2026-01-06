@@ -167,10 +167,6 @@ namespace Orc.EntityFramework
         public static Orc.EntityFramework.ObjectContextManager<TObjectContext> GetManager(Orc.EntityFramework.IConnectionStringManager connectionStringManager, Orc.EntityFramework.IContextFactory contextFactory) { }
         public static Orc.EntityFramework.ObjectContextManager<TObjectContext> GetManager(string databaseNameOrConnectionStringName, string label, Orc.EntityFramework.IConnectionStringManager connectionStringManager, Orc.EntityFramework.IContextFactory contextFactory) { }
     }
-    public static class OrcEntityFrameworkModule
-    {
-        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddOrcEntityFramework(this Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection) { }
-    }
     public class UnitOfWork : Orc.EntityFramework.IUnitOfWork, System.IDisposable
     {
         public UnitOfWork(System.Data.Entity.DbContext context, System.IServiceProvider serviceProvider, string? tag = null) { }
@@ -238,5 +234,12 @@ namespace Orc.EntityFramework.Repositories
         where TEntity :  class
     {
         TEntity? GetByKey(TPrimaryKey keyValue);
+    }
+}
+namespace Orc
+{
+    public static class OrcEntityFrameworkModule
+    {
+        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddOrcEntityFramework(this Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection) { }
     }
 }
