@@ -1,13 +1,12 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="GlobalInitialization.cs" company="Catel development team">
-//   Copyright (c) 2008 - 2015 Catel development team. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
+﻿using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
+using Catel.Logging;
 using Catel.Reflection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NUnit.Framework;
+using Orc.EntityFramework.Tests;
 using Orc.EntityFramework.Tests.DbContext;
 
 /// <summary>
@@ -20,11 +19,29 @@ public class GlobalInitialization
     [OneTimeSetUp]
     public static void SetUp()
     {
-        //System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+        LogManager.FallbackLoggerFactory = LoggerFactory.Create(x =>
+        {
+            if (Debugger.IsAttached)
+            {
+                x.AddFilter(x => x == LogLevel.Debug);
+
+                x.AddDebug();
+            }
+
+            x.AddConsole();
+        });
+
+        var culture = new CultureInfo("en-US");
+        System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+        System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
 
         // Required since we do multithreaded initialization
-        //TypeCache.InitializeTypes(allowMultithreadedInitialization: false);
-        TypeCache.InitializeTypes();
+        TypeCache.InitializeTypes(allowMultithreadedInitialization: false);
+
+        // Set a global service provider for helpers such as LanguageHelper
+        var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+
+        Catel.IoC.IoCContainer.ServiceProvider = serviceCollection.BuildServiceProvider();
 
         using (var dbContext = new TestDbContextContainer())
         {
