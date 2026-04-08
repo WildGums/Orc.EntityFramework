@@ -1,21 +1,20 @@
-﻿namespace Orc.EntityFramework
-{
-    using System;
+﻿namespace Orc.EntityFramework;
 
+using System;
+
+/// <summary>
+/// Interface defining the connection string manager.
+/// <para />
+/// This interface is used in combination with the <see cref="DbContextManager{TDbContext}"/>.
+/// </summary>
+public interface IConnectionStringManager
+{
     /// <summary>
-    /// Interface defining the connection string manager.
-    /// <para />
-    /// This interface is used in combination with the <see cref="DbContextManager{TDbContext}"/>.
+    /// Gets the connection string for the specified database.
     /// </summary>
-    public interface IConnectionStringManager
-    {
-        /// <summary>
-        /// Gets the connection string for the specified database.
-        /// </summary>
-        /// <param name="contextType">The type of the context.</param>
-        /// <param name="database">The database.</param>
-        /// <param name="label">The label.</param>
-        /// <returns>The connection string.</returns>
-        string? GetConnectionString(Type contextType, string database, string label);
-    }
+    /// <param name="contextType">The type of the context.</param>
+    /// <param name="database">The database.</param>
+    /// <param name="label">The label.</param>
+    /// <returns>The connection string.</returns>
+    string? GetConnectionString(Type contextType, string database, string label);
 }

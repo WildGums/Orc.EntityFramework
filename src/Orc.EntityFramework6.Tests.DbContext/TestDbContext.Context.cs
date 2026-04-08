@@ -7,26 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Orc.EntityFramework.Tests.DbContext
+namespace Orc.EntityFramework.Tests.DbContext;
+
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+
+public partial class TestDbContextContainer : DbContext
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    
-    public partial class TestDbContextContainer : DbContext
+    public TestDbContextContainer()
+        : base("name=TestDbContextContainer")
     {
-        public TestDbContextContainer()
-            : base("name=TestDbContextContainer")
-        {
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public DbSet<DbContextCustomer> DbContextCustomers { get; set; }
-        public DbSet<DbContextOrder> DbContextOrders { get; set; }
-        public DbSet<DbContextProduct> DbContextProducts { get; set; }
     }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        throw new UnintentionalCodeFirstException();
+    }
+
+    public DbSet<DbContextCustomer> DbContextCustomers { get; set; }
+    public DbSet<DbContextOrder> DbContextOrders { get; set; }
+    public DbSet<DbContextProduct> DbContextProducts { get; set; }
 }
