@@ -1,21 +1,20 @@
-﻿namespace Orc.EntityFramework.Tests
+﻿namespace Orc.EntityFramework.Tests;
+
+using Catel.Data;
+using DbContext;
+using NUnit.Framework;
+
+public class ConnectionStringManagerFacts
 {
-    using Catel.Data;
-    using DbContext;
-    using NUnit.Framework;
-
-    public class ConnectionStringManagerFacts
+    [TestFixture]
+    public class TheGetConnectionStringMethod
     {
-        [TestFixture]
-        public class TheGetConnectionStringMethod
+        [TestCase]
+        public void ReturnsNullByDefault()
         {
-            [TestCase]
-            public void ReturnsNullByDefault()
-            {
-                var connectionStringManager = new ConnectionStringManager();
+            var connectionStringManager = new ConnectionStringManager();
 
-                Assert.That(connectionStringManager.GetConnectionString(typeof(TestDbContextContainer), null, null), Is.EqualTo(null));
-            }
+            Assert.That(connectionStringManager.GetConnectionString(typeof(TestDbContextContainer), null, null), Is.EqualTo(null));
         }
     }
 }

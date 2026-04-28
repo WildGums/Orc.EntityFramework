@@ -1,19 +1,18 @@
-﻿namespace Orc.EntityFramework
-{
-    using System.Data.Entity;
+﻿namespace Orc.EntityFramework;
 
-    public static partial class DbContextExtensions
+using System.Data.Entity;
+
+public static partial class DbContextExtensions
+{
+    /// <summary>
+    /// Gets the name of the table as it is mapped in the database.
+    /// </summary>
+    /// <typeparam name="TEntity">The entity.</typeparam>
+    /// <param name="context">The context.</param>
+    /// <returns>The table name including the schema.</returns>
+    public static string GetTableName<TEntity>(this DbContext context)
+        where TEntity : class
     {
-        /// <summary>
-        /// Gets the name of the table as it is mapped in the database.
-        /// </summary>
-        /// <typeparam name="TEntity">The entity.</typeparam>
-        /// <param name="context">The context.</param>
-        /// <returns>The table name including the schema.</returns>
-        public static string GetTableName<TEntity>(this DbContext context)
-            where TEntity : class
-        {
-            return GetTableName(context, typeof(TEntity));
-        }
+        return GetTableName(context, typeof(TEntity));
     }
 }

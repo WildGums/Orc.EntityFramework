@@ -28,7 +28,7 @@ namespace Orc.EntityFramework
     public abstract class ContextManager<TContext> : System.IDisposable
         where TContext :  class, System.IDisposable
     {
-        protected ContextManager(string databaseNameOrConnectionStringName, string label, System.Data.Entity.Infrastructure.DbCompiledModel? model, System.Data.Entity.Core.Objects.ObjectContext? context) { }
+        protected ContextManager(string databaseNameOrConnectionStringName, string label, System.Data.Entity.Infrastructure.DbCompiledModel? model, System.Data.Entity.Core.Objects.ObjectContext? context, Orc.EntityFramework.IConnectionStringManager connectionStringManager, Orc.EntityFramework.IContextFactory contextFactory) { }
         public TContext Context { get; }
         protected bool EnableVerboseLogging { get; set; }
         public int RefCount { get; }
@@ -71,8 +71,8 @@ namespace Orc.EntityFramework
         where TDbContext : System.Data.Entity.DbContext
     {
         protected override void Initialize(TDbContext context) { }
-        public static Orc.EntityFramework.DbContextManager<TDbContext> GetManager() { }
-        public static Orc.EntityFramework.DbContextManager<TDbContext> GetManager(string databaseNameOrConnectionStringName, string label = "default", System.Data.Entity.Infrastructure.DbCompiledModel? model = null) { }
+        public static Orc.EntityFramework.DbContextManager<TDbContext> GetManager(Orc.EntityFramework.IConnectionStringManager connectionStringManager, Orc.EntityFramework.IContextFactory contextFactory) { }
+        public static Orc.EntityFramework.DbContextManager<TDbContext> GetManager(string databaseNameOrConnectionStringName, string? label, System.Data.Entity.Infrastructure.DbCompiledModel? model, Orc.EntityFramework.IConnectionStringManager connectionStringManager, Orc.EntityFramework.IContextFactory contextFactory) { }
     }
     public static class DbEntityEntryExtensions
     {
@@ -154,6 +154,8 @@ namespace Orc.EntityFramework
         void SaveChanges();
         System.Threading.Tasks.Task SaveChangesAsync();
     }
+    public interface IUnitOfWork<TDbContext> : Orc.EntityFramework.IUnitOfWork, System.IDisposable
+        where TDbContext : System.Data.Entity.DbContext { }
     public static class IsolationHelper
     {
         public static string TranslateTransactionLevelToSql(System.Data.IsolationLevel isolationLevel) { }
@@ -162,12 +164,12 @@ namespace Orc.EntityFramework
         where TObjectContext : System.Data.Entity.Core.Objects.ObjectContext
     {
         protected override void Initialize(TObjectContext context) { }
-        public static Orc.EntityFramework.ObjectContextManager<TObjectContext> GetManager() { }
-        public static Orc.EntityFramework.ObjectContextManager<TObjectContext> GetManager(string databaseNameOrConnectionStringName, string label = "default") { }
+        public static Orc.EntityFramework.ObjectContextManager<TObjectContext> GetManager(Orc.EntityFramework.IConnectionStringManager connectionStringManager, Orc.EntityFramework.IContextFactory contextFactory) { }
+        public static Orc.EntityFramework.ObjectContextManager<TObjectContext> GetManager(string databaseNameOrConnectionStringName, string label, Orc.EntityFramework.IConnectionStringManager connectionStringManager, Orc.EntityFramework.IContextFactory contextFactory) { }
     }
     public class UnitOfWork : Orc.EntityFramework.IUnitOfWork, System.IDisposable
     {
-        public UnitOfWork(System.Data.Entity.DbContext context, string? tag = null) { }
+        public UnitOfWork(System.Data.Entity.DbContext context, System.IServiceProvider serviceProvider, string? tag = null) { }
         protected System.Data.Entity.DbContext DbContext { get; }
         protected bool EnableVerboseLogging { get; set; }
         public bool IsInTransaction { get; }
@@ -192,10 +194,11 @@ namespace Orc.EntityFramework
         public virtual void SaveChanges() { }
         public virtual System.Threading.Tasks.Task SaveChangesAsync() { }
     }
-    public class UnitOfWork<TDbContext> : Orc.EntityFramework.UnitOfWork
+    public class UnitOfWork<TDbContext> : Orc.EntityFramework.UnitOfWork, Orc.EntityFramework.IUnitOfWork, Orc.EntityFramework.IUnitOfWork<TDbContext>, System.IDisposable
         where TDbContext : System.Data.Entity.DbContext
     {
-        public UnitOfWork(TDbContext? dbContext = default) { }
+        public UnitOfWork(Orc.EntityFramework.IConnectionStringManager connectionStringManager, Orc.EntityFramework.IContextFactory contextFactory, System.IServiceProvider serviceProvider) { }
+        public UnitOfWork(TDbContext? dbContext, Orc.EntityFramework.IConnectionStringManager connectionStringManager, Orc.EntityFramework.IContextFactory contextFactory, System.IServiceProvider serviceProvider) { }
         protected override void OnDisposing() { }
     }
 }
@@ -231,5 +234,12 @@ namespace Orc.EntityFramework.Repositories
         where TEntity :  class
     {
         TEntity? GetByKey(TPrimaryKey keyValue);
+    }
+}
+namespace Orc
+{
+    public static class OrcEntityFrameworkModule
+    {
+        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddOrcEntityFramework(this Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection) { }
     }
 }

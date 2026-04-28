@@ -1,37 +1,29 @@
-﻿namespace Orc.EntityFramework.Tests
+﻿namespace Orc.EntityFramework.Tests;
+
+using Catel.Data;
+using DbContext;
+using Microsoft.Extensions.DependencyInjection;
+using NUnit.Framework;
+
+public class ContextManagerFacts
 {
-    using Catel.Data;
-    using DbContext;
-    using NUnit.Framework;
-
-#if EF5
-    using ObjectContext;
-#endif
-
-    public class ContextManagerFacts
+    [TestFixture]
+    public class TheTypeInstantiation
     {
-        [TestFixture]
-        public class TheTypeInstantiation
+        [TestCase]
+        public void WorksForDbContext()
         {
-            [TestCase]
-            public void WorksForDbContext()
-            {
-                using (var manager = DbContextManager<TestDbContextContainer>.GetManager())
-                {
-                    Assert.That(manager, Is.Not.Null);
-                }
-            }
+            var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
 
-#if EF5
-            [TestCase]
-            public void WorksForObjectContext()
+            using var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            var connectionStringManager = serviceProvider.GetRequiredService<IConnectionStringManager>();
+            var contextFactory = serviceProvider.GetRequiredService<IContextFactory>();
+
+            using (var manager = DbContextManager<TestDbContextContainer>.GetManager(connectionStringManager, contextFactory))
             {
-                using (var manager = ObjectContextManager<TestObjectContextContainer>.GetManager())
-                {
-                    Assert.IsNotNull(manager);
-                }
+                Assert.That(manager, Is.Not.Null);
             }
-#endif
         }
     }
 }
