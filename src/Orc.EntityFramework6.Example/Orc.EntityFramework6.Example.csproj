@@ -21,7 +21,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="LoadAssembliesOnStartup.Fody" Version="4.7.0" PrivateAssets="all" />
-    <PackageReference Include="Orchestra.Core" Version="8.0.0-alpha0115" />
+    <PackageReference Include="Orchestra.Core" Version="8.0.0-alpha0122" />
   </ItemGroup>
 
   <ItemGroup>
