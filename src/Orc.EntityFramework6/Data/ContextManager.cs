@@ -129,7 +129,7 @@ public abstract class ContextManager<TContext> : IDisposable
 
             if (EnableVerboseLogging)
             {
-                Logger.LogDebug("Referencing {0}, new ref count is {1}", _contextLogName, _refCount);
+                Logger.LogDebug("Referencing {ContextLogName}, new ref count is {RefCount}", _contextLogName, _refCount);
             }
         }
     }
@@ -142,14 +142,14 @@ public abstract class ContextManager<TContext> : IDisposable
 
             if (EnableVerboseLogging)
             {
-                Logger.LogDebug("Dereferencing {0}, new ref count is {1}", _contextLogName, _refCount);
+                Logger.LogDebug("Dereferencing {ContextLogName}, new ref count is {RefCount}", _contextLogName, _refCount);
             }
 
             if (_refCount == 0)
             {
                 if (EnableVerboseLogging)
                 {
-                    Logger.LogDebug("Disposing DbContext {0} because it reached a ref count of 0", _contextLogName);
+                    Logger.LogDebug("Disposing DbContext {ContextLogName} because it reached a ref count of 0", _contextLogName);
                 }
 
                 _context.Dispose();

@@ -24,7 +24,7 @@ public static partial class DbContextExtensions
     {
         ArgumentNullException.ThrowIfNull(dbContext);
 
-        Logger.LogInformation("Setting transaction isolation level to '{0}' for DbContext '{1}'", isolationLevel, ObjectToStringHelper.ToFullTypeString(dbContext));
+        Logger.LogInformation("Setting transaction isolation level to '{IsolationLevel}' for DbContext '{DbContextType}'", isolationLevel, ObjectToStringHelper.ToFullTypeString(dbContext));
 
         var sqlCommand = IsolationHelper.TranslateTransactionLevelToSql(isolationLevel);
         var objectContext = dbContext.GetObjectContext();
