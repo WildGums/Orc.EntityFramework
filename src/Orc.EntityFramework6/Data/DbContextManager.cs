@@ -59,7 +59,7 @@ public class DbContextManager<TDbContext> : ContextManager<TDbContext>
         }
         catch (Exception)
         {
-            Logger.LogWarning("Failed to initialize database context '{0}', probably the connection cannot be established", context.GetType().FullName);
+            Logger.LogWarning("Failed to initialize database context '{ContextType}', probably the connection cannot be established", context.GetType().FullName);
         }
     }
 

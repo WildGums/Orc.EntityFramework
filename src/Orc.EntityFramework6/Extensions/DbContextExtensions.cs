@@ -285,7 +285,7 @@ public static partial class DbContextExtensions
 
             if (entitySet is null)
             {
-                throw Logger.LogErrorAndCreateException<NotSupportedException>(string.Format("No EntitySet has been found for the provided Type '{0}'", entityType));
+                throw Logger.LogErrorAndCreateException<NotSupportedException>("No EntitySet has been found for the provided Type '{EntityType}'", entityType);
             }
 
             return entitySet.Name;

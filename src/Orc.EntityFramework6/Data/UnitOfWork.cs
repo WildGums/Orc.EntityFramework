@@ -90,7 +90,7 @@ public class UnitOfWork : IUnitOfWork
     /// <exception cref="InvalidOperationException">A transaction is already running.</exception>
     public virtual void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
     {
-        Logger.LogDebug("Beginning transaction | {0}", Tag);
+        Logger.LogDebug("Beginning transaction | {Tag}", Tag);
 
         if (Transaction is not null)
         {
@@ -108,7 +108,7 @@ public class UnitOfWork : IUnitOfWork
 
         if (EnableVerboseLogging)
         {
-            Logger.LogDebug("Began transaction | {0}", Tag);
+            Logger.LogDebug("Began transaction | {Tag}", Tag);
         }
     }
 
@@ -118,7 +118,7 @@ public class UnitOfWork : IUnitOfWork
     /// <exception cref="InvalidOperationException">No transaction is currently running.</exception>
     public virtual void RollBackTransaction()
     {
-        Logger.LogDebug("Rolling back transaction | {0}", Tag);
+        Logger.LogDebug("Rolling back transaction | {Tag}", Tag);
 
         if (Transaction is null)
         {
@@ -130,7 +130,7 @@ public class UnitOfWork : IUnitOfWork
 
         if (EnableVerboseLogging)
         {
-            Logger.LogDebug("Rolling back transaction | {0}", Tag);
+            Logger.LogDebug("Rolling back transaction | {Tag}", Tag);
         }
     }
 
@@ -140,7 +140,7 @@ public class UnitOfWork : IUnitOfWork
     /// <exception cref="InvalidOperationException">No transaction is currently running.</exception>
     public virtual void CommitTransaction()
     {
-        Logger.LogDebug("Committing transaction | {0}", Tag);
+        Logger.LogDebug("Committing transaction | {Tag}", Tag);
 
         if (Transaction is null)
         {
@@ -157,12 +157,12 @@ public class UnitOfWork : IUnitOfWork
 
             if (EnableVerboseLogging)
             {
-                Logger.LogDebug("Committed transaction | {0}", Tag);
+                Logger.LogDebug("Committed transaction | {Tag}", Tag);
             }
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, "An exception occurred while committing the transaction, automatically rolling back | {0}", Tag);
+            Logger.LogError(ex, "An exception occurred while committing the transaction, automatically rolling back | {Tag}", Tag);
 
             RollBackTransaction();
             throw;
@@ -176,7 +176,7 @@ public class UnitOfWork : IUnitOfWork
     /// <exception cref="InvalidOperationException">No transaction is currently running.</exception>
     public virtual async Task CommitTransactionAsync()
     {
-        Logger.LogDebug("Committing transaction async | {0}", Tag);
+        Logger.LogDebug("Committing transaction async | {Tag}", Tag);
 
         if (Transaction is null)
         {
@@ -193,12 +193,12 @@ public class UnitOfWork : IUnitOfWork
 
             if (EnableVerboseLogging)
             { 
-                Logger.LogDebug("Committed transaction async | {0}", Tag);
+                Logger.LogDebug("Committed transaction async | {Tag}", Tag);
             }
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, "An exception occurred while committing the transaction, automatically rolling back | {0}", Tag);
+            Logger.LogError(ex, "An exception occurred while committing the transaction, automatically rolling back | {Tag}", Tag);
 
             RollBackTransaction();
             throw;
@@ -235,7 +235,7 @@ public class UnitOfWork : IUnitOfWork
         var serviceDescriptor = serviceDescriptors.FirstOrDefault(x => !x.IsKeyedService);
         if (serviceDescriptor is null)
         {
-            throw Logger.LogErrorAndCreateException<NotSupportedException>("The specified repository type '{0}' cannot be found. Make sure it is registered in the ServiceCollection.", typeof(TEntityRepository).FullName);
+            throw Logger.LogErrorAndCreateException<NotSupportedException>("The specified repository type '{RepositoryType}' cannot be found. Make sure it is registered in the ServiceCollection.", typeof(TEntityRepository).FullName);
         }
 
         var repository = ActivatorUtilities.CreateInstance(_serviceProvider, serviceDescriptor.ImplementationType!, DbContext);
@@ -251,14 +251,14 @@ public class UnitOfWork : IUnitOfWork
     {
         ArgumentNullException.ThrowIfNull(collection);
 
-        Logger.LogDebug("Refreshing collection | {0}", Tag);
+        Logger.LogDebug("Refreshing collection | {Tag}", Tag);
 
         var objectContext = DbContext.GetObjectContext();
         objectContext.Refresh(refreshMode, collection);
 
         if (EnableVerboseLogging)
         {
-            Logger.LogDebug("Refreshed collection | {0}", Tag);
+            Logger.LogDebug("Refreshed collection | {Tag}", Tag);
         }
     }
 
@@ -272,14 +272,14 @@ public class UnitOfWork : IUnitOfWork
     {
         ArgumentNullException.ThrowIfNull(collection);
 
-        Logger.LogDebug("Refreshing collection async | {0}", Tag);
+        Logger.LogDebug("Refreshing collection async | {Tag}", Tag);
 
         var objectContext = DbContext.GetObjectContext();
         await objectContext.RefreshAsync(refreshMode, collection);
 
         if (EnableVerboseLogging)
         { 
-            Logger.LogDebug("Refreshed collection async | {0}", Tag);
+            Logger.LogDebug("Refreshed collection async | {Tag}", Tag);
         }
     }
 #endif
@@ -293,14 +293,14 @@ public class UnitOfWork : IUnitOfWork
     {
         ArgumentNullException.ThrowIfNull(entity);
 
-        Logger.LogDebug("Refreshing entity | {0}", Tag);
+        Logger.LogDebug("Refreshing entity | {Tag}", Tag);
 
         var objectContext = DbContext.GetObjectContext();
         objectContext.Refresh(refreshMode, entity);
 
         if (EnableVerboseLogging)
         {
-            Logger.LogDebug("Refreshed entity | {0}", Tag);
+            Logger.LogDebug("Refreshed entity | {Tag}", Tag);
         }
     }
 
@@ -314,14 +314,14 @@ public class UnitOfWork : IUnitOfWork
     {
         ArgumentNullException.ThrowIfNull(entity);
 
-        Logger.LogDebug("Refreshing entity async | {0}", Tag);
+        Logger.LogDebug("Refreshing entity async | {Tag}", Tag);
 
         var objectContext = DbContext.GetObjectContext();
         await objectContext.RefreshAsync(refreshMode, entity);
 
         if (EnableVerboseLogging)
         { 
-            Logger.LogDebug("Refreshed entity async | {0}", Tag);
+            Logger.LogDebug("Refreshed entity async | {Tag}", Tag);
         }
     }
 #endif
@@ -332,7 +332,7 @@ public class UnitOfWork : IUnitOfWork
     /// <exception cref="InvalidOperationException">A transaction is running. Call CommitTransaction instead.</exception>
     public virtual void SaveChanges()
     {
-        Logger.LogDebug("Saving changes | {0}", Tag);
+        Logger.LogDebug("Saving changes | {Tag}", Tag);
 
         if (IsInTransaction)
         {
@@ -343,7 +343,7 @@ public class UnitOfWork : IUnitOfWork
 
         if (EnableVerboseLogging)
         {
-            Logger.LogDebug("Saved changes | {0}", Tag);
+            Logger.LogDebug("Saved changes | {Tag}", Tag);
         }
     }
 
@@ -354,7 +354,7 @@ public class UnitOfWork : IUnitOfWork
     /// <exception cref="InvalidOperationException">A transaction is running. Call CommitTransaction instead.</exception>
     public virtual async Task SaveChangesAsync()
     {
-        Logger.LogDebug("Saving changes async | {0}", Tag);
+        Logger.LogDebug("Saving changes async | {Tag}", Tag);
 
         if (IsInTransaction)
         {
@@ -365,7 +365,7 @@ public class UnitOfWork : IUnitOfWork
 
         if (EnableVerboseLogging)
         { 
-            Logger.LogDebug("Saved changes async | {0}", Tag);
+            Logger.LogDebug("Saved changes async | {Tag}", Tag);
         }
     }
 #endif
@@ -430,14 +430,14 @@ public class UnitOfWork : IUnitOfWork
         {
             if (EnableVerboseLogging)
             {
-                Logger.LogDebug("Opening connection | {0}", Tag);
+                Logger.LogDebug("Opening connection | {Tag}", Tag);
             }
 
             objectContext.Connection.Open();
 
             if (EnableVerboseLogging)
             {
-                Logger.LogDebug("Opened connection | {0}", Tag);
+                Logger.LogDebug("Opened connection | {Tag}", Tag);
             }
         }
     }
@@ -453,14 +453,14 @@ public class UnitOfWork : IUnitOfWork
         {
             if (EnableVerboseLogging)
             { 
-                Logger.LogDebug("Opening connection async | {0}", Tag);
+                Logger.LogDebug("Opening connection async | {Tag}", Tag);
             }
 
             await objectContext.Connection.OpenAsync();
 
             if (EnableVerboseLogging)
             { 
-                Logger.LogDebug("Opened connection async | {0}", Tag);
+                Logger.LogDebug("Opened connection async | {Tag}", Tag);
             }
         }
     }
@@ -473,14 +473,14 @@ public class UnitOfWork : IUnitOfWork
     {
         if (Transaction is not null)
         {
-            Logger.LogDebug("Releasing transaction | {0}", Tag);
+            Logger.LogDebug("Releasing transaction | {Tag}", Tag);
 
             Transaction.Dispose();
             Transaction = null;
 
             if (EnableVerboseLogging)
             {
-                Logger.LogDebug("Released transaction | {0}", Tag);
+                Logger.LogDebug("Released transaction | {Tag}", Tag);
             }
         }
     }
