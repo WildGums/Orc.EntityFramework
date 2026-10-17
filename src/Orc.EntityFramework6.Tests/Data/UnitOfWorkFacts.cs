@@ -9,6 +9,79 @@ using NUnit.Framework;
 
 public class UnitOfWorkFacts
 {
+    [TestFixture]
+    public class The_Dispose_Method
+    {
+        [Test]
+        public void Releases_Implicit_Context_And_Creates_A_Fresh_Context()
+        {
+            var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+            using var serviceProvider = serviceCollection.BuildServiceProvider();
+            var connectionStringManager = serviceProvider.GetRequiredService<IConnectionStringManager>();
+            var contextFactory = serviceProvider.GetRequiredService<IContextFactory>();
+            DbContextManager<TestDbContextContainer> manager;
+
+            using (var unitOfWork = new UnitOfWork<TestDbContextContainer>(connectionStringManager, contextFactory, serviceProvider))
+            {
+                using (manager = DbContextManager<TestDbContextContainer>.GetManager(connectionStringManager, contextFactory))
+                {
+                    Assert.That(manager.RefCount, Is.EqualTo(2));
+                }
+
+                Assert.That(manager.RefCount, Is.EqualTo(1));
+            }
+
+            Assert.That(manager.RefCount, Is.EqualTo(0));
+            using var nextManager = DbContextManager<TestDbContextContainer>.GetManager(connectionStringManager, contextFactory);
+            Assert.That(nextManager.Context, Is.Not.SameAs(manager.Context));
+        }
+
+        [Test]
+        public void Keeps_Shared_Context_Until_Last_Unit_Of_Work_Is_Disposed()
+        {
+            var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+            using var serviceProvider = serviceCollection.BuildServiceProvider();
+            var connectionStringManager = serviceProvider.GetRequiredService<IConnectionStringManager>();
+            var contextFactory = serviceProvider.GetRequiredService<IContextFactory>();
+            DbContextManager<TestDbContextContainer> manager;
+
+            using (var outer = new UnitOfWork<TestDbContextContainer>(connectionStringManager, contextFactory, serviceProvider))
+            {
+                using (manager = DbContextManager<TestDbContextContainer>.GetManager(connectionStringManager, contextFactory))
+                {
+                    using (var inner = new UnitOfWork<TestDbContextContainer>(connectionStringManager, contextFactory, serviceProvider))
+                    {
+                        Assert.That(manager.RefCount, Is.EqualTo(3));
+                    }
+
+                    Assert.That(manager.RefCount, Is.EqualTo(2));
+                }
+
+                Assert.That(manager.RefCount, Is.EqualTo(1));
+            }
+
+            Assert.That(manager.RefCount, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void Does_Not_Release_Explicitly_Injected_Context()
+        {
+            var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+            using var serviceProvider = serviceCollection.BuildServiceProvider();
+            var connectionStringManager = serviceProvider.GetRequiredService<IConnectionStringManager>();
+            var contextFactory = serviceProvider.GetRequiredService<IContextFactory>();
+            using var manager = DbContextManager<TestDbContextContainer>.GetManager(connectionStringManager, contextFactory);
+
+            using (var unitOfWork = new UnitOfWork<TestDbContextContainer>(manager.Context, connectionStringManager, contextFactory, serviceProvider))
+            {
+                Assert.That(manager.RefCount, Is.EqualTo(1));
+            }
+
+            Assert.That(manager.RefCount, Is.EqualTo(1));
+            Assert.DoesNotThrow(() => manager.Context.GetObjectContext());
+        }
+    }
+
     [TestFixture, RequiresThread(ApartmentState.STA)]
     public class TheIsInTransactionProperty
     {

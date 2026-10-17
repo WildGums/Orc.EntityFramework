@@ -27,7 +27,7 @@ public class UnitOfWork<TDbContext> : UnitOfWork, IUnitOfWork<TDbContext>
     /// <param name="serviceProvider"></param>
     public UnitOfWork(IConnectionStringManager connectionStringManager,
         IContextFactory contextFactory, IServiceProvider serviceProvider)
-        : this(DbContextManager<TDbContext>.GetManager(connectionStringManager, contextFactory).Context,
+        : this(null,
               connectionStringManager, contextFactory, serviceProvider)
     {
         // Leave empty
