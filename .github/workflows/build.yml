@@ -274,6 +274,26 @@ jobs:
         with:
           user: ${{ env.NuGetUser }}
 
+      - name: Start test database
+        shell: pwsh
+        run: |
+          if (-not (Get-Command sqllocaldb -ErrorAction SilentlyContinue)) {
+            throw "SQL Server Express LocalDB must be installed on the Windows runner."
+          }
+
+          sqllocaldb info MSSQLLocalDB
+          if ($LASTEXITCODE -ne 0) {
+            sqllocaldb create MSSQLLocalDB
+            if ($LASTEXITCODE -ne 0) {
+              throw "Unable to create SQL Server LocalDB instance MSSQLLocalDB."
+            }
+          }
+
+          sqllocaldb start MSSQLLocalDB
+          if ($LASTEXITCODE -ne 0) {
+            throw "Unable to start SQL Server LocalDB instance MSSQLLocalDB."
+          }
+
       # Build, test & deploy
       - name: ${{ github.event_name == 'workflow_dispatch' && env.Deploy == 'true' && format('Build and deploy {0} via Cake', steps.gitversion.outputs.fullSemVer) || format('Build and test {0} via Cake', steps.gitversion.outputs.fullSemVer) }}
         id: cake-build
